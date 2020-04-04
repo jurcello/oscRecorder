@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-
+    mTimeline = Timeline();
 }
 
 //--------------------------------------------------------------
@@ -13,11 +13,33 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofDrawBitmapString("Hi, this will be the osc recorder", 20., 20.);
+    ofDrawBitmapString("Press 's' to start, 't' to stop, 'space' to toggle and 'r' to rewind", 20., 40.);
+    ofDrawBitmapString("Elapsed seoonds: " + ofToString(mTimeline.elapsedSeconds()), 20, 80);
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+    switch (key) {
+        case 's':
+            mTimeline.start();
+            break;
+        
+        case 't':
+            mTimeline.stop();
+            break;
+            
+        case 'r':
+            mTimeline.reset();
+            break;
+            
+        case ' ':
+            mTimeline.startStop();
+            break;
+            
+        default:
+            break;
+    }
 }
 
 //--------------------------------------------------------------
