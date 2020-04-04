@@ -14,7 +14,9 @@ void ofApp::update(){
 void ofApp::draw(){
     ofDrawBitmapString("Hi, this will be the osc recorder", 20., 20.);
     ofDrawBitmapString("Press 's' to start, 't' to stop, 'space' to toggle and 'r' to rewind", 20., 40.);
-    ofDrawBitmapString("Elapsed seoonds: " + ofToString(mTimeline.elapsedSeconds()), 20, 80);
+    ofDrawBitmapString("Elapsed seconds: " + ofToString(mTimeline.elapsedSeconds()), 20, 80);
+    ofDrawBitmapString("Elapsed millis: " + ofToString(mTimeline.elapsedMillis()), 20, 100);
+    ofDrawBitmapString("Elapsed time: " + mTimeline.timecode(), 20, 120);
     
 }
 

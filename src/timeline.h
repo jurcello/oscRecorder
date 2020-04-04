@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <chrono>
 #include <ctime>
+#include <string>
 
 #endif /* timeline_h */
 
@@ -24,7 +25,10 @@ public:
     void reset();
     uint64_t elapsedMillis();
     double elapsedSeconds();
-    
+    uint32_t minutes();
+    uint32_t seconds();
+    uint32_t millis();
+    std::string timecode();
     
 private:
     bool isRunning;

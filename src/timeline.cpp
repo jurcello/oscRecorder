@@ -64,3 +64,21 @@ uint64_t Timeline::elapsedMillis() {
 double Timeline::elapsedSeconds() {
     return elapsedMillis() / 1000.f;
 }
+
+uint32_t Timeline::minutes() {
+    return ((elapsedMillis() / 1000) % 3600) / 60;
+}
+
+uint32_t Timeline::seconds() {
+    return (elapsedMillis() / 1000) % 60;
+}
+
+uint32_t Timeline::millis() {
+    return elapsedMillis() % 1000;
+}
+
+std::string Timeline::timecode() {
+    char timestr[50];
+    sprintf(timestr, "%.2d:%.2d:%.3d", minutes(), seconds(), millis());
+    return timestr;
+}
