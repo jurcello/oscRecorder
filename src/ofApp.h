@@ -2,6 +2,11 @@
 
 #include "ofMain.h"
 #include "timeline.h"
+#include "ofxOsc.h"
+#include "Channel.h"
+
+#define IN_PORT 9900
+#define OUT_PORT 1100
 
 class ofApp : public ofBaseApp{
 
@@ -23,5 +28,10 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		
 private:
-    Timeline mTimeline;
+    Timeline timeline;
+    ofxOscReceiver receiver;
+    ofxOscSender sender;
+    bool recording;
+    Channel oscChannel;
+    ofxOscMessage lastMessage;
 };
