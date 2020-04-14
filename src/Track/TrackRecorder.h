@@ -10,17 +10,21 @@
 template <typename MessageType>
 class TrackRecorder {
 public:
-    TrackRecorder(Track<MessageType> &track)
+    TrackRecorder(Track<MessageType> *track)
     :track(track)
     {}
 
     void recordMessage(unsigned long time, MessageType message) {
         auto event = TrackEvent<MessageType>(time, message);
-        track.addEvent(event);
+        track->addEvent(event);
+    }
+
+    void clear() {
+        track->clear();
     }
 
 private:
-    Track<MessageType> &track;
+    Track<MessageType> *track;
 };
 
 

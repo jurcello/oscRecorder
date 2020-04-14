@@ -85,3 +85,11 @@ TEST_CASE("The general track has a method to find the first iterator with a cert
     CHECK((*track.getIteratorFrom(10)).millis == 10);
     CHECK((*track.getIteratorFrom(15)).millis == 20);
 }
+
+TEST_CASE("The track has a clear method which clears the contents of the track", "[GeneralTrack]") {
+    FloatTrack track;
+    track.addEvent(TrackEvent<float>(0));
+    track.addEvent(TrackEvent<float>(10));
+    track.clear();
+    REQUIRE(track.size() == 0);
+}

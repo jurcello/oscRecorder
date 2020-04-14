@@ -14,7 +14,7 @@ class noNewMessageException: public std::exception
 template <typename MessageType>
 class TrackPlayer {
 public:
-    TrackPlayer(Track<MessageType> &track)
+    TrackPlayer(Track<MessageType> *track)
     :track(track), currentPosition(0)
     {}
 
@@ -22,15 +22,15 @@ public:
         if (! this->hasMessages(time)) {
             throw noNew;
         }
-        return track.getEventAt(currentPosition++).message;
+        return track->getEventAt(currentPosition++).message;
     }
 
     bool hasMessages(uint64_t time) {
-        return currentPosition < track.size() && track.getEventAt(currentPosition).millis <= time;
+        return currentPosition < track->size() && track->getEventAt(currentPosition).millis <= time;
     }
 
     void seek(u_int64_t time) {
-        currentPosition = track.findIndexAtTime(time);
+        currentPosition = track->findIndexAtTime(time);
     }
 
     void rewind() {
@@ -38,11 +38,11 @@ public:
     }
 
     uint64_t timeLength() {
-        return track.getEventAt(track.size() - 1).millis;
+        return track->getEventAt(track->size() - 1).millis;
     }
 
 private:
-    Track<MessageType> &track;
+    Track<MessageType> *track;
     unsigned long currentPosition;
 };
 

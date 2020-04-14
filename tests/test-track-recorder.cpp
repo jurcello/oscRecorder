@@ -8,15 +8,23 @@ typedef TrackRecorder<float> FloatRecorder;
 
 TEST_CASE("A track recorder can be made using a track.", "[TrackRecorder]") {
     FloatTrack track;
-    FloatRecorder recorder(track);
+    FloatRecorder recorder(&track);
 }
 
 TEST_CASE("The recorder can record a message at a specific millis time.", "[TrackRecoder]") {
     FloatTrack track;
-    FloatRecorder recorder(track);
+    FloatRecorder recorder(&track);
     recorder.recordMessage(0, 0.5f);
     REQUIRE(track.size() == 1);
     auto event = track.getEventAt(0);
     REQUIRE(event.millis == 0);
     REQUIRE(event.message == 0.5f);
+}
+
+TEST_CASE("The recorder can clear all the messages in the track", "[TrackRecorder]") {
+    FloatTrack track;
+    FloatRecorder recorder(&track);
+    recorder.recordMessage(0, 0.5f);
+    recorder.clear();
+    REQUIRE(track.size() == 0);
 }

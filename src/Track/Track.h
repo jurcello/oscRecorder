@@ -65,6 +65,10 @@ public:
         return index;
     }
 
+    void clear() {
+        events.clear();
+    }
+
 private:
     TrackEventList events;
 
