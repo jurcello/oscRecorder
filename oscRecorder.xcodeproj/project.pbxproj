@@ -65,10 +65,10 @@
 		1191FEC7D614BBF4503BAA1A /* Channel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Channel.cpp; path = src/Channel.cpp; sourceTree = SOURCE_ROOT; };
 		13199AE46BC4AE703877C8E3 /* Channel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Channel.h; path = src/Channel.h; sourceTree = SOURCE_ROOT; };
 		19C8731FC23C29951962E80A /* test-track-recorder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-track-recorder.cpp"; sourceTree = "<group>"; };
+		19C873AEF5C7D10B86888B34 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
+		19C8759FA4D22DA5656C46E4 /* TrackRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackRecorder.h; sourceTree = "<group>"; };
 		19C876964DA5AC31A5315C79 /* test-track-player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-track-player.cpp"; sourceTree = "<group>"; };
-		19C877FD607B6DA6B6D8D289 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
-		19C878EBA2A2DD437BA5C686 /* TrackPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackPlayer.h; sourceTree = "<group>"; };
-		19C87C3D494AB625A945FDD9 /* TrackRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackRecorder.h; sourceTree = "<group>"; };
+		19C8771635895F9E0BEEF80A /* TrackPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackPlayer.h; sourceTree = "<group>"; };
 		19C87E07E4A6EAA4A62D3126 /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmodex.dylib; sourceTree = "<group>"; };
 		19C87EE1ABC9874B3B3F0079 /* test-track.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-track.cpp"; sourceTree = "<group>"; };
 		20F35AFADAF0068B067E713F /* OscReceivedElements.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OscReceivedElements.h; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscReceivedElements.h; sourceTree = SOURCE_ROOT; };
@@ -331,6 +331,16 @@
 				19C87E07E4A6EAA4A62D3126 /* libfmodex.dylib */,
 			);
 			path = libs;
+			sourceTree = "<group>";
+		};
+		19C87E7013BEE2FFE9360C55 /* Track */ = {
+			isa = PBXGroup;
+			children = (
+				19C873AEF5C7D10B86888B34 /* Track.h */,
+				19C8771635895F9E0BEEF80A /* TrackPlayer.h */,
+				19C8759FA4D22DA5656C46E4 /* TrackRecorder.h */,
+			);
+			path = Track;
 			sourceTree = "<group>";
 		};
 		1F4FB5C423662B96ADFDCC0B /* ofxXmlSettings */ = {
@@ -779,9 +789,7 @@
 				1191FEC7D614BBF4503BAA1A /* Channel.cpp */,
 				09624DCA137DDE2B9AF0C437 /* timeline.cpp */,
 				007FD47FDD1CCF8792239C6C /* timeline.h */,
-				19C877FD607B6DA6B6D8D289 /* Track.h */,
-				19C87C3D494AB625A945FDD9 /* TrackRecorder.h */,
-				19C878EBA2A2DD437BA5C686 /* TrackPlayer.h */,
+				19C87E7013BEE2FFE9360C55 /* Track */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
