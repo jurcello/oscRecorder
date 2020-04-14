@@ -10,17 +10,23 @@
 
 template <typename MessageType>
 struct TrackEvent {
-    TrackEvent(uint64_t time)
-    :millis(time)
-    {}
+    TrackEvent(uint64_t time);
 
-    TrackEvent(uint64_t time, MessageType message)
-    :millis(time), message(message)
-    {}
+    TrackEvent(uint64_t time, MessageType message);
 
     uint64_t millis;
     MessageType message;
 };
+
+template <typename MessageType>
+TrackEvent<MessageType>::TrackEvent(uint64_t time)
+:millis(time)
+{}
+
+template <typename MessageType>
+TrackEvent<MessageType>::TrackEvent(uint64_t time, MessageType message)
+:millis(time), message(message)
+{}
 
 template <typename MessageType>
 class Track {
@@ -31,7 +37,7 @@ public:
     using iterator = typename TrackEventList::iterator;
     using const_iterator = typename TrackEventList::const_iterator;
 
-    Track() {}
+    Track();
 
     void addEvent(TrackEvent<MessageType> event) {
         auto insertAt = getInsertIterator(event);
@@ -89,5 +95,8 @@ private:
     }
 };
 
+template <typename MessageType>
+Track<MessageType>::Track() {
+}
 
 #endif //OSCRECORDER_TRACK_H

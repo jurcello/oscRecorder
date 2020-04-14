@@ -9,7 +9,7 @@
 #include <exception>
 
 class noNewMessageException: public std::exception
-{} noNew;
+{};
 
 template <typename MessageType>
 class TrackPlayer {
@@ -20,7 +20,7 @@ public:
 
     MessageType getNextMessage(uint64_t time) {
         if (! this->hasMessages(time)) {
-            throw noNew;
+            throw noNewMessageException();
         }
         return track->getEventAt(currentPosition++).message;
     }
