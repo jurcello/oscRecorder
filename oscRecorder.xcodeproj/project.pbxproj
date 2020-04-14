@@ -11,6 +11,7 @@
 		19C8744060E35F5EF552CA61 /* libfmodex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C87E07E4A6EAA4A62D3126 /* libfmodex.dylib */; };
 		19C874CA987940909F8C5CB2 /* test-track-recorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C8731FC23C29951962E80A /* test-track-recorder.cpp */; };
 		19C87830D887AB7D7D99B4C1 /* test-track.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87EE1ABC9874B3B3F0079 /* test-track.cpp */; };
+		19C87F7CAFF681C3AD367CAA /* test-track-player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C876964DA5AC31A5315C79 /* test-track-player.cpp */; };
 		4ADB88E2FB52E76A471065DE /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AED834CE4DEC5260AF302A2 /* ofxOscParameterSync.cpp */; };
 		510CAFE035E576A4E1502D52 /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6DEF695B88BA5FAACEAA937 /* UdpSocket.cpp */; };
 		5864AD82E20F15536D054EA3 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF49D76C45D5DB505A234880 /* ofxOscMessage.cpp */; };
@@ -64,7 +65,9 @@
 		1191FEC7D614BBF4503BAA1A /* Channel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Channel.cpp; path = src/Channel.cpp; sourceTree = SOURCE_ROOT; };
 		13199AE46BC4AE703877C8E3 /* Channel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Channel.h; path = src/Channel.h; sourceTree = SOURCE_ROOT; };
 		19C8731FC23C29951962E80A /* test-track-recorder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-track-recorder.cpp"; sourceTree = "<group>"; };
+		19C876964DA5AC31A5315C79 /* test-track-player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-track-player.cpp"; sourceTree = "<group>"; };
 		19C877FD607B6DA6B6D8D289 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
+		19C878EBA2A2DD437BA5C686 /* TrackPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackPlayer.h; sourceTree = "<group>"; };
 		19C87C3D494AB625A945FDD9 /* TrackRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackRecorder.h; sourceTree = "<group>"; };
 		19C87E07E4A6EAA4A62D3126 /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmodex.dylib; sourceTree = "<group>"; };
 		19C87EE1ABC9874B3B3F0079 /* test-track.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-track.cpp"; sourceTree = "<group>"; };
@@ -446,6 +449,7 @@
 				CFC5F45C243CCD1C00A529D3 /* tests-main.cpp */,
 				19C87EE1ABC9874B3B3F0079 /* test-track.cpp */,
 				19C8731FC23C29951962E80A /* test-track-recorder.cpp */,
+				19C876964DA5AC31A5315C79 /* test-track-player.cpp */,
 			);
 			path = tests;
 			sourceTree = "<group>";
@@ -777,6 +781,7 @@
 				007FD47FDD1CCF8792239C6C /* timeline.h */,
 				19C877FD607B6DA6B6D8D289 /* Track.h */,
 				19C87C3D494AB625A945FDD9 /* TrackRecorder.h */,
+				19C878EBA2A2DD437BA5C686 /* TrackPlayer.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -929,6 +934,7 @@
 				CFC5F45D243CCD1C00A529D3 /* tests-main.cpp in Sources */,
 				19C87830D887AB7D7D99B4C1 /* test-track.cpp in Sources */,
 				19C874CA987940909F8C5CB2 /* test-track-recorder.cpp in Sources */,
+				19C87F7CAFF681C3AD367CAA /* test-track-player.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
