@@ -2,8 +2,8 @@
 // Created by Jur de Vries on 09/04/2020.
 //
 
-#ifndef OSCRECORDER_GENERALTRACK_H
-#define OSCRECORDER_GENERALTRACK_H
+#ifndef OSCRECORDER_TRACK_H
+#define OSCRECORDER_TRACK_H
 
 #include <cstdint>
 #include <vector>
@@ -19,7 +19,7 @@ struct TrackEvent {
 };
 
 template <typename MessageType>
-class GeneralTrack {
+class Track {
 private:
     using TrackEventList = std::vector<TrackEvent<MessageType>>;
 
@@ -27,9 +27,7 @@ public:
     using iterator = typename TrackEventList::iterator;
     using const_iterator = typename TrackEventList::const_iterator;
 
-    GeneralTrack()
-    :numberOfEvents(0)
-    {}
+    Track() {}
 
     void addEvent(TrackEvent<MessageType> event) {
         auto insertAt = getInsertIterator(event);
@@ -40,15 +38,15 @@ public:
         return events.size();
     }
 
-    GeneralTrack<MessageType>::iterator begin() {
+    Track<MessageType>::iterator begin() {
         return events.begin();
     }
 
-    GeneralTrack<MessageType>::iterator end() {
+    Track<MessageType>::iterator end() {
         return events.end();
     }
 
-    GeneralTrack<MessageType>::iterator getIteratorFrom(uint64_t millisToFind) {
+    Track<MessageType>::iterator getIteratorFrom(uint64_t millisToFind) {
         return events.begin() + findIndexAtTime(millisToFind);
     }
 
@@ -64,10 +62,9 @@ public:
     }
 
 private:
-    int numberOfEvents;
     TrackEventList events;
 
-    typename std::vector<TrackEvent<MessageType>, std::allocator<TrackEvent<MessageType>>>::const_iterator getInsertIterator(const TrackEvent<MessageType> &event) const {
+    const_iterator getInsertIterator(const TrackEvent<MessageType> &event) const {
         auto insertAt = getInsertIteratorFromStartOrEnd(event);
         while (insertAt != events.end() && (*insertAt).millis < event.millis) {
             insertAt++;
@@ -75,7 +72,7 @@ private:
         return insertAt;
     }
 
-    typename std::vector<TrackEvent<MessageType>, std::allocator<TrackEvent<MessageType>>>::const_iterator getInsertIteratorFromStartOrEnd(const TrackEvent<MessageType> &event) const {
+    const_iterator getInsertIteratorFromStartOrEnd(const TrackEvent<MessageType> &event) const {
         auto insertAt = events.begin();
         if (events.size() > 0 && events[events.size()].millis < event.millis) {
             insertAt = events.end() - 1;
@@ -85,4 +82,4 @@ private:
 };
 
 
-#endif //OSCRECORDER_GENERALTRACK_H
+#endif //OSCRECORDER_TRACK_H

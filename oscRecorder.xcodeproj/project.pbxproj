@@ -62,7 +62,7 @@
 		0AED834CE4DEC5260AF302A2 /* ofxOscParameterSync.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxOscParameterSync.cpp; path = ../../../addons/ofxOsc/src/ofxOscParameterSync.cpp; sourceTree = SOURCE_ROOT; };
 		1191FEC7D614BBF4503BAA1A /* Channel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Channel.cpp; path = src/Channel.cpp; sourceTree = SOURCE_ROOT; };
 		13199AE46BC4AE703877C8E3 /* Channel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Channel.h; path = src/Channel.h; sourceTree = SOURCE_ROOT; };
-		19C877FD607B6DA6B6D8D289 /* GeneralTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralTrack.h; sourceTree = "<group>"; };
+		19C877FD607B6DA6B6D8D289 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
 		19C87E07E4A6EAA4A62D3126 /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmodex.dylib; sourceTree = "<group>"; };
 		19C87EE1ABC9874B3B3F0079 /* test-track.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-track.cpp"; sourceTree = "<group>"; };
 		20F35AFADAF0068B067E713F /* OscReceivedElements.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OscReceivedElements.h; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscReceivedElements.h; sourceTree = SOURCE_ROOT; };
@@ -771,7 +771,7 @@
 				1191FEC7D614BBF4503BAA1A /* Channel.cpp */,
 				09624DCA137DDE2B9AF0C437 /* timeline.cpp */,
 				007FD47FDD1CCF8792239C6C /* timeline.h */,
-				19C877FD607B6DA6B6D8D289 /* GeneralTrack.h */,
+				19C877FD607B6DA6B6D8D289 /* Track.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
