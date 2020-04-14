@@ -5,8 +5,7 @@ typedef Track<float> FloatTrack;
 typedef TrackEvent<float> FloatEvent;
 
 FloatEvent createTrackEvent(uint64_t millis, float message) {
-    FloatEvent event(millis);
-    event.message = message;
+    FloatEvent event(millis, message);
     return event;
 }
 

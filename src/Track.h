@@ -14,6 +14,10 @@ struct TrackEvent {
     :millis(time)
     {}
 
+    TrackEvent(uint64_t time, MessageType message)
+    :millis(time), message(message)
+    {}
+
     uint64_t millis;
     MessageType message;
 };
