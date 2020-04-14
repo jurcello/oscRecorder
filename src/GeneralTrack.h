@@ -8,35 +8,80 @@
 #include <cstdint>
 #include <vector>
 
+template <typename MessageType>
 struct TrackEvent {
-    TrackEvent(uint64_t time);
+    TrackEvent(uint64_t time)
+    :millis(time)
+    {}
+
     uint64_t millis;
+    MessageType message;
 };
 
+template <typename MessageType>
 class GeneralTrack {
 private:
-    typedef std::vector<TrackEvent> TrackEventList;
+    using TrackEventList = std::vector<TrackEvent<MessageType>>;
 
 public:
-    typedef TrackEventList::iterator iterator;
-    typedef TrackEventList::const_iterator const_iterator;
+    using iterator = typename TrackEventList::iterator;
+    using const_iterator = typename TrackEventList::const_iterator;
 
-    GeneralTrack();
-    void addEvent(TrackEvent event);
-    unsigned long size();
-    GeneralTrack::iterator begin();
-    GeneralTrack::iterator end();
-    GeneralTrack::iterator getIteratorFrom(uint64_t millisToFind);
+    GeneralTrack()
+    :numberOfEvents(0)
+    {}
 
-    TrackEvent getEventAt(unsigned long pos);
-    unsigned long findIndexAtTime(u_int64_t millisToFind);
+    void addEvent(TrackEvent<MessageType> event) {
+        auto insertAt = getInsertIterator(event);
+        events.insert(insertAt, event);
+    }
+
+    unsigned long size() {
+        return events.size();
+    }
+
+    GeneralTrack<MessageType>::iterator begin() {
+        return events.begin();
+    }
+
+    GeneralTrack<MessageType>::iterator end() {
+        return events.end();
+    }
+
+    GeneralTrack<MessageType>::iterator getIteratorFrom(uint64_t millisToFind) {
+        return events.begin() + findIndexAtTime(millisToFind);
+    }
+
+    TrackEvent<MessageType> getEventAt(unsigned long pos) {
+        return events.at(pos);
+    }
+
+    unsigned long findIndexAtTime(u_int64_t millisToFind) {
+        unsigned long index = 0;
+        while (index < events.size() && events[index].millis < millisToFind)
+            index++;
+        return index;
+    }
 
 private:
     int numberOfEvents;
-    std::vector<TrackEvent> events;
+    TrackEventList events;
 
-    std::vector<TrackEvent, std::allocator<TrackEvent>>::const_iterator getInsertIterator(const TrackEvent &event) const;
-    std::vector<TrackEvent, std::allocator<TrackEvent>>::const_iterator getInsertIteratorFromStartOrEnd(const TrackEvent &event) const;
+    typename std::vector<TrackEvent<MessageType>, std::allocator<TrackEvent<MessageType>>>::const_iterator getInsertIterator(const TrackEvent<MessageType> &event) const {
+        auto insertAt = getInsertIteratorFromStartOrEnd(event);
+        while (insertAt != events.end() && (*insertAt).millis < event.millis) {
+            insertAt++;
+        }
+        return insertAt;
+    }
+
+    typename std::vector<TrackEvent<MessageType>, std::allocator<TrackEvent<MessageType>>>::const_iterator getInsertIteratorFromStartOrEnd(const TrackEvent<MessageType> &event) const {
+        auto insertAt = events.begin();
+        if (events.size() > 0 && events[events.size()].millis < event.millis) {
+            insertAt = events.end() - 1;
+        }
+        return insertAt;
+    }
 };
 
 
