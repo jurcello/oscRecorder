@@ -18,12 +18,12 @@ void ofApp::update(){
     if (timeline.running() && receiver.hasWaitingMessages() && recording) {
         ofxOscMessage m;
         receiver.getNextMessage(m);
-        oscChannel.recordMessage(m, timeline.elapsedMillis());
+        trackChannel.recorder->recordMessage(timeline.elapsedMillis(), m);
         sender.sendMessage(m);
     }
     if (timeline.running() && !recording) {
-        while (oscChannel.hasMessages(timeline.elapsedMillis())) {
-            lastMessage = oscChannel.getMessage(timeline.elapsedMillis());
+        while (trackChannel.player->hasMessages(timeline.elapsedMillis())) {
+            lastMessage = trackChannel.player->getNextMessage(timeline.elapsedMillis());
             sender.sendMessage(lastMessage);
         }
     }
@@ -46,9 +46,9 @@ void ofApp::keyPressed(int key){
     switch (key) {
         case 's':
             timeline.start();
-            oscChannel.rewind();
+            trackChannel.player->rewind();
             if (recording) {
-                oscChannel.clear();
+                trackChannel.recorder->clear();
             }
             break;
         
@@ -59,7 +59,7 @@ void ofApp::keyPressed(int key){
             
         case 'r':
             timeline.reset();
-            oscChannel.rewind();
+            trackChannel.player->rewind();
             break;
             
         case ' ':

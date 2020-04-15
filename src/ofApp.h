@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "timeline.h"
 #include "ofxOsc.h"
-#include "Channel.h"
+#include "TrackChannel.h"
 
 #define IN_PORT 9900
 #define OUT_PORT 1100
@@ -32,6 +32,6 @@ private:
     ofxOscReceiver receiver;
     ofxOscSender sender;
     bool recording;
-    Channel oscChannel;
+    TrackChannel trackChannel;
     ofxOscMessage lastMessage;
 };

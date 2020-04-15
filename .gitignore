@@ -90,3 +90,5 @@ DerivedData/
 *.app
 
 /oscRecorder.xcodeproj/xcuserdata/jur.xcuserdatad/xcschemes/
+/oscRecorder.xcodeproj/xcshareddata/xcschemes/
+/bin/
