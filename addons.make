@@ -1,3 +1,5 @@
+ofxFontStash2
+ofxGui
+ofxMightyUI
 ofxOsc
-ofxUnitTests
 ofxXmlSettings
