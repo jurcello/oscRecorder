@@ -16,13 +16,14 @@ typedef std::shared_ptr<TimelineUI> TimelineUIRef;
 
 class TimelineUI {
 public:
-    static TimelineUIRef create(Timeline &timeline);
+    static TimelineUIRef create(Timeline &timeline, bool &recording);
     void drawUi();
 
 private:
-    TimelineUI(Timeline &timeline);
+    TimelineUI(Timeline &timeline, bool &recording);
 
     Timeline &timeline;
+    bool &recording;
 };
 
 

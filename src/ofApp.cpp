@@ -7,7 +7,7 @@ void ofApp::setup(){
     receiver.setup(IN_PORT);
     sender.setup("localhost", OUT_PORT);
     gui.setup();
-    timelineUI = TimelineUI::create(timeline);
+    timelineUI = TimelineUI::create(timeline, recording);
 }
 
 //--------------------------------------------------------------
@@ -33,9 +33,6 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofDrawBitmapString("Hi, this will be the osc recorder", 20., 20.);
-    ofDrawBitmapString("Press 's' to start, 't' to stop, 'space' to toggle and 'r' to rewind", 20., 40.);
-    ofDrawBitmapString("Elapsed time: " + timeline.timecode(), 20, 120);
     std::string rec = recording ? "recording" : "playing";
     ofDrawBitmapString(rec, 20, 140);
     if (lastMessage.getNumArgs() > 0) {
