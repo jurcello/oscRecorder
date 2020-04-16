@@ -6,6 +6,8 @@ void ofApp::setup(){
     recording = false;
     receiver.setup(IN_PORT);
     sender.setup("localhost", OUT_PORT);
+    gui.setup();
+    timelineUI = TimelineUI::create(timeline);
 }
 
 //--------------------------------------------------------------
@@ -39,6 +41,16 @@ void ofApp::draw(){
     if (lastMessage.getNumArgs() > 0) {
         ofDrawBitmapString("Last osc message: " + lastMessage.getAddress() + ofToString(lastMessage.getArgAsFloat(0)), 20, 160);
     }
+
+    drawUI();
+}
+
+void ofApp::drawUI() {
+    gui.begin();
+    {
+        timelineUI->drawUi();
+    }
+    gui.end();
 }
 
 //--------------------------------------------------------------
@@ -123,3 +135,4 @@ void ofApp::gotMessage(ofMessage msg){
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
 }
+
