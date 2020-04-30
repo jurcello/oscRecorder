@@ -13,8 +13,6 @@
 #include <ctime>
 #include <string>
 
-#endif /* timeline_h */
-
 class Timeline {
 public:
     Timeline();
@@ -35,3 +33,4 @@ private:
     std::chrono::time_point<std::chrono::system_clock> mStartTime;
     std::chrono::time_point<std::chrono::system_clock> mEndTime;
 };
+#endif /* timeline_h */

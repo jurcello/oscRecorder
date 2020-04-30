@@ -4,6 +4,8 @@
 #include "timeline.h"
 #include "ofxOsc.h"
 #include "TrackChannel.h"
+#include "ofxImGui.h"
+#include "TimelineUI.h"
 
 #define IN_PORT 9900
 #define OUT_PORT 1100
@@ -14,6 +16,7 @@ class ofApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
+		void drawUI();
 
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -34,4 +37,7 @@ private:
     bool recording;
     TrackChannel trackChannel;
     ofxOscMessage lastMessage;
+
+    TimelineUIRef timelineUI;
+    ofxImGui::Gui gui;
 };

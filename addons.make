@@ -1,5 +1,4 @@
-ofxFontStash2
 ofxGui
-ofxMightyUI
+ofxImGui
 ofxOsc
 ofxXmlSettings

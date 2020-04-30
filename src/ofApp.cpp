@@ -6,6 +6,10 @@ void ofApp::setup(){
     recording = false;
     receiver.setup(IN_PORT);
     sender.setup("localhost", OUT_PORT);
+    gui.setup();
+    timelineUI = TimelineUI::create(timeline, recording);
+    ofxOscMessage m;
+    lastMessage = m;
 }
 
 //--------------------------------------------------------------
@@ -14,11 +18,13 @@ void ofApp::update(){
         ofxOscMessage m;
         receiver.getNextMessage(m);
         sender.sendMessage(m);
+        timelineUI->setInputMessage(m);
     }
     if (timeline.running() && receiver.hasWaitingMessages() && recording) {
         ofxOscMessage m;
         receiver.getNextMessage(m);
         trackChannel.recorder->recordMessage(timeline.elapsedMillis(), m);
+        timelineUI->setInputMessage(m);
         sender.sendMessage(m);
     }
     if (timeline.running() && !recording) {
@@ -31,14 +37,21 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofDrawBitmapString("Hi, this will be the osc recorder", 20., 20.);
-    ofDrawBitmapString("Press 's' to start, 't' to stop, 'space' to toggle and 'r' to rewind", 20., 40.);
-    ofDrawBitmapString("Elapsed time: " + timeline.timecode(), 20, 120);
     std::string rec = recording ? "recording" : "playing";
     ofDrawBitmapString(rec, 20, 140);
     if (lastMessage.getNumArgs() > 0) {
         ofDrawBitmapString("Last osc message: " + lastMessage.getAddress() + ofToString(lastMessage.getArgAsFloat(0)), 20, 160);
     }
+
+    drawUI();
+}
+
+void ofApp::drawUI() {
+    gui.begin();
+    {
+        timelineUI->drawUi();
+    }
+    gui.end();
 }
 
 //--------------------------------------------------------------
@@ -123,3 +136,4 @@ void ofApp::gotMessage(ofMessage msg){
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
 }
+
