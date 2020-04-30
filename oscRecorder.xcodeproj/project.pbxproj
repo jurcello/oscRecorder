@@ -394,6 +394,7 @@
 				19C87D549363EB8688D87B1E /* test-track-recorder.cpp */,
 				19C877AADE122C33E24196B4 /* test-track.cpp */,
 				19C87E609C1E3E3AA01ED0E2 /* tests-main.cpp */,
+				19C87E954E388BA45A25C968 /* TrackDrawers */,
 			);
 			path = tests;
 			sourceTree = "<group>";
@@ -404,6 +405,13 @@
 				19C87E314BCD950A51C070EA /* Tests */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		19C87E954E388BA45A25C968 /* TrackDrawers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TrackDrawers;
 			sourceTree = "<group>";
 		};
 		1F4FB5C423662B96ADFDCC0B /* ofxXmlSettings */ = {

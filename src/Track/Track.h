@@ -71,6 +71,13 @@ public:
         return index;
     }
 
+    uint64_t duration() {
+        if (events.size() == 0) {
+            return 0;
+        }
+        return events[events.size()-1].millis;
+    }
+
     void clear() {
         events.clear();
     }

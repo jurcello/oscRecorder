@@ -93,3 +93,16 @@ TEST_CASE("The track has a clear method which clears the contents of the track",
     track.clear();
     REQUIRE(track.size() == 0);
 }
+
+TEST_CASE("The track length is 0 if there are no events in the track", "[GeneralTrack]") {
+    FloatTrack track;
+    REQUIRE(track.duration() == 0);
+}
+
+TEST_CASE("The track length is the millis of the last event in the track", "[GeneralTrack]") {
+    FloatTrack track;
+    track.addEvent(createTrackEvent(2000, .0f));
+    track.addEvent(createTrackEvent(30, .0f));
+    track.addEvent(createTrackEvent(1000, .0f));
+    REQUIRE(track.duration() == 2000);
+}
