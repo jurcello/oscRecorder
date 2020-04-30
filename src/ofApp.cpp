@@ -8,6 +8,8 @@ void ofApp::setup(){
     sender.setup("localhost", OUT_PORT);
     gui.setup();
     timelineUI = TimelineUI::create(timeline, recording);
+    ofxOscMessage m;
+    lastMessage = m;
 }
 
 //--------------------------------------------------------------
@@ -16,11 +18,13 @@ void ofApp::update(){
         ofxOscMessage m;
         receiver.getNextMessage(m);
         sender.sendMessage(m);
+        timelineUI->setInputMessage(m);
     }
     if (timeline.running() && receiver.hasWaitingMessages() && recording) {
         ofxOscMessage m;
         receiver.getNextMessage(m);
         trackChannel.recorder->recordMessage(timeline.elapsedMillis(), m);
+        timelineUI->setInputMessage(m);
         sender.sendMessage(m);
     }
     if (timeline.running() && !recording) {

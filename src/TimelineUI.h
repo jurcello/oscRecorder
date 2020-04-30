@@ -8,7 +8,9 @@
 #include <memory>
 #include "timeline.h"
 #include "ofMain.h"
+#include "ofxOsc.h"
 #include "ofxImGui.h"
+#include "Utils.h"
 
 class TimelineUI;
 
@@ -18,12 +20,14 @@ class TimelineUI {
 public:
     static TimelineUIRef create(Timeline &timeline, bool &recording);
     void drawUi();
+    void setInputMessage(ofxOscMessage message);
 
 private:
     TimelineUI(Timeline &timeline, bool &recording);
 
     Timeline &timeline;
     bool &recording;
+    ofxOscMessage inputMessage;
 };
 
 

@@ -47,12 +47,20 @@ void TimelineUI::drawUi() {
         ImGui::PopStyleColor(1);
     }
     ImGui::SameLine(0.f, 4.f);
-    ImGui::SameLine(0.f, 4.f);
     ImGui::Text(timeline.timecode().c_str());
+    ImGui::SameLine(0.f, 10.f);
+    std::string inputMessageString = "Last input osc message: ";
+    inputMessageString += Utils::oscMessageToString(inputMessage);
+    ImGui::Text(inputMessageString.c_str());
     ImGui::End();
 }
 
 TimelineUI::TimelineUI(Timeline &timeline, bool &recording)
 :timeline(timeline), recording(recording)
 {
+    inputMessage = ofxOscMessage();
+}
+
+void TimelineUI::setInputMessage(ofxOscMessage message) {
+    inputMessage = message;
 }
