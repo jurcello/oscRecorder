@@ -50,6 +50,7 @@ void ofApp::drawUI() {
     gui.begin();
     {
         timelineUI->drawUi();
+        tracksUI.draw();
     }
     gui.end();
 }
