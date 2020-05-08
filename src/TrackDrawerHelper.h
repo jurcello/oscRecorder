@@ -12,7 +12,7 @@
 class TrackDrawerHelper {
 public:
     void setMaxTimeMillis(uint64_t millis);
-
+    void setCurrentTimeMillis(uint64_t millis);
     uint64_t getMaxTimeMillis();
 
     int getContentSize();
@@ -21,9 +21,12 @@ public:
 
     std::vector<RulerData> getRulerData();
 
+    int getTimeMarkerPosition() const;
+
 private:
     uint64_t maxTime;
     float pixelsPerSecond;
+    uint64_t currentTimeMillis = 0;
 
     std::string createTimecodeString(int seconds) const;
 

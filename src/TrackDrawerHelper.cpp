@@ -59,3 +59,11 @@ std::string TrackDrawerHelper::formatTimecodeString(int displaySeconds, int disp
     std::string secondsText = timeCode;
     return secondsText;
 }
+
+int TrackDrawerHelper::getTimeMarkerPosition() const {
+    return static_cast<int>(pixelsPerSecond * currentTimeMillis / 1000);
+}
+
+void TrackDrawerHelper::setCurrentTimeMillis(uint64_t millis) {
+    currentTimeMillis = millis;
+}

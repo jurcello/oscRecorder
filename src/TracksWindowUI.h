@@ -10,12 +10,16 @@
 
 class TracksWindowUI {
 public:
-    void draw();
+    void draw(uint64_t currentMillis);
 
 private:
     TrackDrawerHelper drawerHelper;
 
     void drawRuler(ImDrawList *drawList, ImVec2 windowPos, float offsetTop, float lineLength);
+
+    void drawTracks(ImDrawList *drawList, const glm::vec2 &windowPos) const;
+
+    void drawPlayHead(ImDrawList *drawList, const glm::vec2 &windowPos) const;
 };
 
 #endif //OSCRECORDER_TRACKSWINDOWUI_H

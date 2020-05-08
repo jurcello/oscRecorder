@@ -50,7 +50,7 @@ void ofApp::drawUI() {
     gui.begin();
     {
         timelineUI->drawUi();
-        tracksUI.draw();
+        tracksUI.draw(timeline.elapsedMillis());
     }
     gui.end();
 }

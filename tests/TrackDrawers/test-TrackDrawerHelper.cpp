@@ -93,4 +93,20 @@ TEST_CASE("Ruler data for every second can be retrieved", "[TrackDrawerHelper]")
     }
 }
 
+TEST_CASE("The position of time marker can be retrieved", "[TrackDrawerHelper]") {
+    TrackDrawerHelper trackDrawer;
+    trackDrawer.setPixelsPerSecond(20.f);
+    SECTION("When no current time is set, the position of the time marker is zero.") {
+        REQUIRE(trackDrawer.getTimeMarkerPosition() == 0);
+    }
+    SECTION("When current time is set, the position of the time marker is is properly calculated.") {
+        trackDrawer.setCurrentTimeMillis(secondsToMillis(1));
+        REQUIRE(trackDrawer.getTimeMarkerPosition() == 20);
+        trackDrawer.setCurrentTimeMillis(secondsToMillis(2));
+        REQUIRE(trackDrawer.getTimeMarkerPosition() == 40);
+        trackDrawer.setPixelsPerSecond(30.f);
+        REQUIRE(trackDrawer.getTimeMarkerPosition() == 60);
+    }
+}
+
 #pragma clang diagnostic pop
