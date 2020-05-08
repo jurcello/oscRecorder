@@ -3,6 +3,7 @@
 //
 
 #include "TrackDrawerHelper.h"
+#include <algorithm>
 
 void TrackDrawerHelper::setMaxTimeMillis(uint64_t millis) {
     maxTime = millis;
@@ -66,4 +67,14 @@ int TrackDrawerHelper::getTimeMarkerPosition() const {
 
 void TrackDrawerHelper::setCurrentTimeMillis(uint64_t millis) {
     currentTimeMillis = millis;
+}
+
+void TrackDrawerHelper::setCurrentWindowWidth(int width) {
+    currentWindowWidth = width;
+}
+
+float TrackDrawerHelper::getScrollOffset() {
+    float offset = (currentTimeMillis / 1000.f) * pixelsPerSecond - currentWindowWidth / 2;
+    float maxOffset = maxTime * pixelsPerSecond / 1000 - currentWindowWidth;
+    return std::max(0.f, std::min(offset, maxOffset));
 }

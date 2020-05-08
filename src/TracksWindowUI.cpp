@@ -7,10 +7,15 @@
 
 void TracksWindowUI::draw(u_int64_t currentMillis) {
     drawerHelper.setMaxTimeMillis(70*1000);
-    drawerHelper.setPixelsPerSecond(20.f);
+    drawerHelper.setPixelsPerSecond(60.f);
     drawerHelper.setCurrentTimeMillis(currentMillis);
     ImGui::SetNextWindowContentSize(ImVec2(drawerHelper.getContentSize(), 100.f));
     ImGui::Begin("Track window", NULL, ImGuiWindowFlags_HorizontalScrollbar);
+    auto windowWidth = ImGui::GetWindowWidth();
+    drawerHelper.setCurrentWindowWidth(static_cast<int>(windowWidth));
+    if (playing && following) {
+        ImGui::SetScrollX(drawerHelper.getScrollOffset());
+    }
     ImDrawList* drawList = ImGui::GetWindowDrawList();
     auto p = ImGui::GetWindowPos() - ImVec2(ImGui::GetScrollX(), 0.f);
 

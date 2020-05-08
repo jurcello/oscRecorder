@@ -16,6 +16,9 @@ public:
     uint64_t getMaxTimeMillis();
 
     int getContentSize();
+    void setCurrentWindowWidth(int width);
+
+    float getScrollOffset();
 
     void setPixelsPerSecond(float pps);
 
@@ -27,6 +30,7 @@ private:
     uint64_t maxTime;
     float pixelsPerSecond;
     uint64_t currentTimeMillis = 0;
+    int currentWindowWidth = 0;
 
     std::string createTimecodeString(int seconds) const;
 

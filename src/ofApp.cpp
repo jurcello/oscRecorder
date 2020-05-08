@@ -51,6 +51,7 @@ void ofApp::drawUI() {
     {
         timelineUI->drawUi();
         tracksUI.draw(timeline.elapsedMillis());
+        tracksUI.playing = timeline.running();
     }
     gui.end();
 }

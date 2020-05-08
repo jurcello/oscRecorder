@@ -109,4 +109,52 @@ TEST_CASE("The position of time marker can be retrieved", "[TrackDrawerHelper]")
     }
 }
 
+TEST_CASE("The position of the content can be centered based on the time", "[TrackDrawerHelper]") {
+    TrackDrawerHelper trackDrawer;
+    trackDrawer.setPixelsPerSecond(20.f);
+
+    SECTION("When the width of the content is the same as the window with, the scrollOffset is 0") {
+        trackDrawer.setMaxTimeMillis(secondsToMillis(10));
+        trackDrawer.setCurrentWindowWidth(200);
+        REQUIRE(trackDrawer.getScrollOffset() == 0);
+    }
+
+   SECTION("When the width of the content is twice the window with, and the time is half max time") {
+        trackDrawer.setPixelsPerSecond(1.f);
+        trackDrawer.setMaxTimeMillis(secondsToMillis(200));
+        trackDrawer.setCurrentWindowWidth(100);
+        trackDrawer.setCurrentTimeMillis(secondsToMillis(100));
+        REQUIRE(trackDrawer.getScrollOffset() == 50);
+    }
+
+   SECTION("When the width of the content is twice the window with, and the time is a bit after a quarter of the time") {
+        trackDrawer.setPixelsPerSecond(1.f);
+        trackDrawer.setMaxTimeMillis(secondsToMillis(200));
+        trackDrawer.setCurrentWindowWidth(100);
+        trackDrawer.setCurrentTimeMillis(secondsToMillis(60));
+        REQUIRE(trackDrawer.getScrollOffset() == 10);
+        trackDrawer.setCurrentTimeMillis(secondsToMillis(80));
+        REQUIRE(trackDrawer.getScrollOffset() == 30);
+    }
+   SECTION("When the time is earlier than the time on half the window from the start, there is no offset") {
+        trackDrawer.setPixelsPerSecond(2.f);
+        trackDrawer.setMaxTimeMillis(secondsToMillis(400));
+        trackDrawer.setCurrentWindowWidth(100);
+        trackDrawer.setCurrentTimeMillis(secondsToMillis(20));
+        REQUIRE(trackDrawer.getScrollOffset() == 0);
+        trackDrawer.setCurrentTimeMillis(secondsToMillis(25));
+        REQUIRE(trackDrawer.getScrollOffset() == 0);
+    }
+    SECTION("When the time nears the end, the offset stays the same") {
+        trackDrawer.setPixelsPerSecond(1.f);
+        trackDrawer.setMaxTimeMillis(secondsToMillis(200));
+        trackDrawer.setCurrentWindowWidth(100);
+        trackDrawer.setCurrentTimeMillis(secondsToMillis(150));
+        REQUIRE(trackDrawer.getScrollOffset() == 100);
+        trackDrawer.setCurrentTimeMillis(secondsToMillis(170));
+        REQUIRE(trackDrawer.getScrollOffset() == 100);
+    }
+
+}
+
 #pragma clang diagnostic pop
