@@ -8,7 +8,7 @@
 void TracksWindowUI::draw() {
     drawerHelper.setMaxTimeMillis(70*1000);
     drawerHelper.setPixelsPerSecond(20.f);
-    ImGui::SetNextWindowContentSize(ImVec2(1200.f, 100.f));
+    ImGui::SetNextWindowContentSize(ImVec2(drawerHelper.getContentSize(), 100.f));
     ImGui::Begin("Track window", NULL, ImGuiWindowFlags_HorizontalScrollbar);
     ImDrawList* drawList = ImGui::GetWindowDrawList();
     auto p = ImGui::GetWindowPos() - ImVec2(ImGui::GetScrollX(), 0.f);
@@ -20,9 +20,15 @@ void TracksWindowUI::draw() {
 }
 
 void TracksWindowUI::drawRuler(ImDrawList *drawList, ImVec2 windowPos, float offsetTop, float lineLength) {
-    auto points = drawerHelper.getRuler5SecondData();
+    auto points = drawerHelper.getRulerData();
+    auto color = ImColor(255, 255, 255);
     for (auto point : points) {
-        drawList->AddLine(ImVec2(point.x, offsetTop) + windowPos, ImVec2(point.x, offsetTop + lineLength) + windowPos, ImColor(255,255,255), 2.f);
-        drawList->AddText(NULL, 14.f, ImVec2(point.x - 17.f, offsetTop + lineLength + 4.f) + windowPos, ImColor(255,255,255), point.text.c_str(), NULL);
+        if (point.hasText) {
+            drawList->AddLine(ImVec2(point.x, offsetTop) + windowPos, ImVec2(point.x, offsetTop + lineLength) + windowPos, color, 2.f);
+            drawList->AddText(NULL, 14.f, ImVec2(point.x - 17.f, offsetTop + lineLength + 4.f) + windowPos, color, point.text.c_str(), NULL);
+        }
+        else {
+            drawList->AddLine(ImVec2(point.x, offsetTop) + windowPos, ImVec2(point.x, offsetTop + lineLength / 2) + windowPos, color, 2.f);
+        }
     }
 }

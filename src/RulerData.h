@@ -12,6 +12,7 @@ struct RulerData {
     RulerData(int pixels, std::string text);
 
     int x;
+    bool hasText;
     std::string text;
 };
 

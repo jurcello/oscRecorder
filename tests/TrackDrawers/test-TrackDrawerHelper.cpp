@@ -41,36 +41,54 @@ TEST_CASE("Pixels per second can be set resulting in different content sizes", "
     }
 }
 
-TEST_CASE("Ruler data for every 5 seconds can be retrieved", "[TrackDrawerHelper]")
+TEST_CASE("Ruler data for every second can be retrieved", "[TrackDrawerHelper]")
 {
     TrackDrawerHelper trackDrawer;
     trackDrawer.setPixelsPerSecond(20.f);
-    SECTION("No ruler data due to low max time") {
-        trackDrawer.setMaxTimeMillis(secondsToMillis(1));
-        std::vector<RulerData> rulerData = trackDrawer.getRuler5SecondData();
-        REQUIRE(rulerData.size() == 0);
+    SECTION("Only one ruler data due to low max time") {
+        trackDrawer.setMaxTimeMillis(500);
+        std::vector<RulerData> rulerData = trackDrawer.getRulerData();
+        REQUIRE(rulerData.size() == 1);
     }
-    SECTION("One ruler point for the 5 second case") {
+    SECTION("Every second there is ruler data without text when second is not multiple of 5") {
+        trackDrawer.setMaxTimeMillis(secondsToMillis(8));
+        std::vector<RulerData> rulerData = trackDrawer.getRulerData();
+        REQUIRE(rulerData[0].hasText);
+        REQUIRE(!rulerData[1].hasText);
+        REQUIRE(!rulerData[2].hasText);
+        REQUIRE(!rulerData[3].hasText);
+        REQUIRE(!rulerData[4].hasText);
+        REQUIRE(rulerData[5].hasText);
+        REQUIRE(!rulerData[6].hasText);
+        REQUIRE(!rulerData[7].hasText);
+    }
+    SECTION("One ruler point with text for the 5 second case") {
         trackDrawer.setMaxTimeMillis(secondsToMillis(5));
-        std::vector<RulerData> rulerData = trackDrawer.getRuler5SecondData();
-        REQUIRE(rulerData[0].x == 100);
-        REQUIRE(rulerData[0].text == "00:05");
+        std::vector<RulerData> rulerData = trackDrawer.getRulerData();
+        REQUIRE(rulerData[5].x == 100);
+        REQUIRE(rulerData[5].hasText);
+        REQUIRE(rulerData[5].text == "00:05");
     }
-    SECTION("Two ruler points for the 5 and 10 second case") {
+    SECTION("Two ruler points with text for the 5 and 10 second case") {
         trackDrawer.setMaxTimeMillis(secondsToMillis(11));
-        std::vector<RulerData> rulerData = trackDrawer.getRuler5SecondData();
-        REQUIRE(rulerData[0].x == 100);
-        REQUIRE(rulerData[0].text == "00:05");
-        REQUIRE(rulerData[1].x == 200);
-        REQUIRE(rulerData[1].text == "00:10");
+        std::vector<RulerData> rulerData = trackDrawer.getRulerData();
+        REQUIRE(rulerData[5].x == 100);
+        REQUIRE(rulerData[5].hasText);
+        REQUIRE(rulerData[5].text == "00:05");
+        REQUIRE(rulerData[10].x == 200);
+        REQUIRE(rulerData[10].hasText);
+        REQUIRE(rulerData[10].text == "00:10");
     }
     SECTION("For a point that exceeds a minute, the minute should be located before the semicolon") {
         trackDrawer.setMaxTimeMillis(secondsToMillis(130));
-        std::vector<RulerData> rulerData = trackDrawer.getRuler5SecondData();
-        REQUIRE(rulerData[12].x == 1300);
-        REQUIRE(rulerData[12].text == "01:05");
-        REQUIRE(rulerData[13].text == "01:10");
-        REQUIRE(rulerData[24].text == "02:05");
+        std::vector<RulerData> rulerData = trackDrawer.getRulerData();
+        REQUIRE(rulerData[65].x == 1300);
+        REQUIRE(rulerData[65].hasText);
+        REQUIRE(rulerData[65].text == "01:05");
+        REQUIRE(rulerData[70].hasText);
+        REQUIRE(rulerData[70].text == "01:10");
+        REQUIRE(rulerData[125].hasText);
+        REQUIRE(rulerData[125].text == "02:05");
 
     }
 }

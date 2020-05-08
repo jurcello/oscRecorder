@@ -19,7 +19,7 @@ public:
 
     void setPixelsPerSecond(float pps);
 
-    std::vector<RulerData> getRuler5SecondData();
+    std::vector<RulerData> getRulerData();
 
 private:
     uint64_t maxTime;

@@ -20,21 +20,25 @@ void TrackDrawerHelper::setPixelsPerSecond(float pps) {
     pixelsPerSecond = pps;
 }
 
-std::vector<RulerData> TrackDrawerHelper::getRuler5SecondData() {
+std::vector<RulerData> TrackDrawerHelper::getRulerData() {
     auto rulerData = std::vector<RulerData>();
-    auto seconds = 5;
+    auto seconds = 0;
     while (seconds * 1000.f <= getMaxTimeMillis()) {
         RulerData dataPoint = getDataPoint(seconds);
         rulerData.push_back(dataPoint);
-        seconds += 5;
+        seconds += 1;
     }
     return rulerData;
 }
 
 RulerData TrackDrawerHelper::getDataPoint(int seconds) const {
     auto pixelPosition = calculatePixelPosition(seconds);
-    std::string secondsText = createTimecodeString(seconds);
-    auto dataPoint = RulerData(static_cast<int>(pixelPosition), secondsText);
+    auto dataPoint = RulerData(static_cast<int>(pixelPosition), "");
+    if (seconds % 5 == 0) {
+        std::string secondsText = createTimecodeString(seconds);
+        dataPoint.text = secondsText;
+        dataPoint.hasText = true;
+    }
     return dataPoint;
 }
 

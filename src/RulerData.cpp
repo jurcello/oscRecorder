@@ -5,6 +5,6 @@
 #include "RulerData.h"
 
 RulerData::RulerData(int pixels, std::string text)
-:x(pixels), text(text)
+:x(pixels), text(text), hasText(false)
 {
 }
