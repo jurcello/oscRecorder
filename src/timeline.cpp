@@ -82,3 +82,7 @@ std::string Timeline::timecode() {
     sprintf(timestr, "%.2d:%.2d:%.3d", minutes(), seconds(), millis());
     return timestr;
 }
+
+void Timeline::setCurrentMillis(u_int64_t millis) {
+    mStartTime = mEndTime - std::chrono::milliseconds(millis);
+}

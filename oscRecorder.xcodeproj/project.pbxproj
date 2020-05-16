@@ -12,11 +12,13 @@
 		0090B479605B26E7C387B02D /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C525795C6CCB99616535318 /* imgui_widgets.cpp */; };
 		016BB55A143AD429330F07DB /* Gui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0E2047B4D03D5151730B52B /* Gui.cpp */; };
 		0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3AA0D4FAA89D0F8A0E545 /* OscReceivedElements.cpp */; };
+		19C87089F240139551DC5F51 /* timeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09624DCA137DDE2B9AF0C437 /* timeline.cpp */; };
 		19C871CEA4BCEC18BCB435A6 /* tests-main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87E609C1E3E3AA01ED0E2 /* tests-main.cpp */; };
 		19C872547C14DDC0D68C1182 /* test-TrackDrawerHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C8782E64E50F88531B8406 /* test-TrackDrawerHelper.cpp */; };
 		19C8726D9446CE39A6B06E93 /* RulerData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C872E53026AF4D61C98862 /* RulerData.cpp */; };
 		19C87321C0DC3B7A18B9F833 /* TracksWindowUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87906E568B3D53F2B010B /* TracksWindowUI.cpp */; };
 		19C8745BB1391F364CAC737D /* RulerData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C872E53026AF4D61C98862 /* RulerData.cpp */; };
+		19C8747D0B143AC6E6975C65 /* test-timeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C8718A4F16FE1BC56ABE42 /* test-timeline.cpp */; };
 		19C874EC799BB3F265CE7BA3 /* test-track.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C877AADE122C33E24196B4 /* test-track.cpp */; };
 		19C8775788A324F63BDA0E87 /* TimelineUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C8744C5AC6CB416D2C3140 /* TimelineUI.cpp */; };
 		19C877CE46AFA7D10A344291 /* TrackDrawerHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C8711F41DA346BDB8C8C32 /* TrackDrawerHelper.cpp */; };
@@ -99,6 +101,7 @@
 		19C8707F95E8094C5F800CCF /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 		19C870F95B5A92AA96054796 /* catch.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = catch.hh; sourceTree = "<group>"; };
 		19C8711F41DA346BDB8C8C32 /* TrackDrawerHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrackDrawerHelper.cpp; sourceTree = "<group>"; };
+		19C8718A4F16FE1BC56ABE42 /* test-timeline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-timeline.cpp"; sourceTree = "<group>"; };
 		19C872E53026AF4D61C98862 /* RulerData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RulerData.cpp; sourceTree = "<group>"; };
 		19C873E7A7414D31C33E757F /* TrackDrawerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackDrawerHelper.h; sourceTree = "<group>"; };
 		19C8744C5AC6CB416D2C3140 /* TimelineUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimelineUI.cpp; sourceTree = "<group>"; };
@@ -408,6 +411,7 @@
 				19C877AADE122C33E24196B4 /* test-track.cpp */,
 				19C87E609C1E3E3AA01ED0E2 /* tests-main.cpp */,
 				19C87E954E388BA45A25C968 /* TrackDrawers */,
+				19C8718A4F16FE1BC56ABE42 /* test-timeline.cpp */,
 			);
 			path = tests;
 			sourceTree = "<group>";
@@ -1129,6 +1133,8 @@
 				19C872547C14DDC0D68C1182 /* test-TrackDrawerHelper.cpp in Sources */,
 				19C877CE46AFA7D10A344291 /* TrackDrawerHelper.cpp in Sources */,
 				19C8745BB1391F364CAC737D /* RulerData.cpp in Sources */,
+				19C8747D0B143AC6E6975C65 /* test-timeline.cpp in Sources */,
+				19C87089F240139551DC5F51 /* timeline.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
