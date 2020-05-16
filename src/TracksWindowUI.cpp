@@ -4,11 +4,12 @@
 
 #include "TracksWindowUI.h"
 #include "ofxImGui.h"
+#include "timeline.h"
 
-void TracksWindowUI::draw(u_int64_t currentMillis) {
+void TracksWindowUI::draw(Timeline &timeline) {
     drawerHelper.setMaxTimeMillis(70*1000);
     drawerHelper.setPixelsPerSecond(60.f);
-    drawerHelper.setCurrentTimeMillis(currentMillis);
+    drawerHelper.setCurrentTimeMillis(timeline.elapsedMillis());
     ImGui::SetNextWindowContentSize(ImVec2(drawerHelper.getContentSize(), 100.f));
     ImGui::Begin("Track window", NULL, ImGuiWindowFlags_HorizontalScrollbar);
     auto windowWidth = ImGui::GetWindowWidth();

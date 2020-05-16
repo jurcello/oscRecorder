@@ -7,10 +7,11 @@
 
 #include "TrackDrawerHelper.h"
 #include "imgui.h"
+#include "timeline.h"
 
 class TracksWindowUI {
 public:
-    void draw(uint64_t currentMillis);
+    void draw(Timeline &timeline);
     bool playing;
     bool following = true;
 
