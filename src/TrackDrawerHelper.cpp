@@ -33,7 +33,7 @@ std::vector<RulerData> TrackDrawerHelper::getRulerData() {
 }
 
 RulerData TrackDrawerHelper::getDataPoint(int seconds) const {
-    auto pixelPosition = calculatePixelPosition(seconds);
+    auto pixelPosition = getPixelsFromMillis(seconds * 1000);
     auto dataPoint = RulerData(static_cast<int>(pixelPosition), "");
     if (seconds % 5 == 0) {
         std::string secondsText = createTimecodeString(seconds);
@@ -43,8 +43,8 @@ RulerData TrackDrawerHelper::getDataPoint(int seconds) const {
     return dataPoint;
 }
 
-float TrackDrawerHelper::calculatePixelPosition(int seconds) const {
-    return seconds * pixelsPerSecond;
+float TrackDrawerHelper::getPixelsFromMillis(u_int64_t millis) const {
+    return (millis / 1000.f) * pixelsPerSecond;
 }
 
 std::string TrackDrawerHelper::createTimecodeString(int seconds) const {

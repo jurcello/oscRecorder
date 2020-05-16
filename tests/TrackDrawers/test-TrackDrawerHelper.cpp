@@ -168,4 +168,12 @@ TEST_CASE("A pixel position can be transformed to a millisecond value" "[TrackDr
     REQUIRE(trackDrawer.getMillisFromPixels(200) == 4000);
 }
 
+TEST_CASE("A millisecond value can be transformed to a pixel position" "[TrackDrawerHelper]") {
+    TrackDrawerHelper trackDrawer;
+    trackDrawer.setPixelsPerSecond(100.f);
+    trackDrawer.setMaxTimeMillis(secondsToMillis(200));
+    REQUIRE(trackDrawer.getPixelsFromMillis(0) == 0);
+    REQUIRE(trackDrawer.getPixelsFromMillis(1000) == 100);
+}
+
 #pragma clang diagnostic pop

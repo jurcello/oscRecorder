@@ -7,7 +7,7 @@
 #include "timeline.h"
 #include "ofLog.h"
 
-void TracksWindowUI::draw(Timeline &timeline) {
+void TracksWindowUI::draw(Timeline &timeline, TrackChannel channel) {
     drawerHelper.setMaxTimeMillis(70*1000);
     drawerHelper.setPixelsPerSecond(60.f);
     drawerHelper.setCurrentTimeMillis(timeline.elapsedMillis());
@@ -22,21 +22,23 @@ void TracksWindowUI::draw(Timeline &timeline) {
     ImDrawList* drawList = ImGui::GetWindowDrawList();
     auto windowLeftTop = ImGui::GetWindowPos();
     auto windowBottomRight = windowLeftTop + ImGui::GetWindowSize();
-    auto p = windowLeftTop - ImVec2(ImGui::GetScrollX(), 0.f);
+    auto contentPosition = windowLeftTop - ImVec2(ImGui::GetScrollX(), 0.f);
 
     ImGuiIO& io = ImGui::GetIO();
     if (ImGui::IsMousePosValid()) {
         auto mousePos = io.MousePos;
         if (mouseIsInsideWindow(mousePos, windowLeftTop, windowBottomRight) && ImGui::IsMouseClicked(0))
         {
-            auto mousePosInContent = mousePos - p;
-            timeline.setCurrentMillis(drawerHelper.getMillisFromPixels(mousePosInContent.x));
+            auto mousePosInContent = mousePos - contentPosition;
+            auto millisFromPixels = drawerHelper.getMillisFromPixels(mousePosInContent.x);
+            timeline.setCurrentMillis(millisFromPixels);
+            channel.player->seek(millisFromPixels);
         }
     }
 
-    drawRuler(drawList, p, 20.f, 20.f);
-    drawTracks(drawList, p);
-    drawPlayHead(drawList, p);
+    drawRuler(drawList, contentPosition, 20.f, 20.f);
+    drawTracks(drawList, contentPosition, channel);
+    drawPlayHead(drawList, contentPosition);
 
     ImGui::End();
 }
@@ -50,9 +52,23 @@ void TracksWindowUI::drawPlayHead(ImDrawList *drawList, const glm::vec2 &windowP
     drawList->AddLine(ImVec2(drawerHelper.getTimeMarkerPosition(), 0.f) + windowPos, ImVec2(drawerHelper.getTimeMarkerPosition(), 100.f) + windowPos, ImColor(255,255,255), 1.f);
 }
 
-void TracksWindowUI::drawTracks(ImDrawList *drawList, const glm::vec2 &windowPos) const {
-    drawList->AddRectFilled(ImVec2(20.f, 60.f) + windowPos, ImVec2(1000.f, 60.f + 30.f) + windowPos, ImColor(255,0,0,100));
-    drawList->AddRect(ImVec2(20.f, 60.f) + windowPos, ImVec2(1000.f, 60.f + 30.f) + windowPos, ImColor(255,0,0,255));
+void TracksWindowUI::drawTracks(ImDrawList *drawList, const glm::vec2 &windowPos, TrackChannel channel) const {
+    auto offset = 0.f;
+    auto trackSize = drawerHelper.getPixelsFromMillis(channel.player->timeLength());
+    auto paddingTop = 60.f;
+    auto trackHeight = 60.f;
+    drawList->AddRectFilled(ImVec2(offset, paddingTop) + windowPos, ImVec2(offset + trackSize, paddingTop + trackHeight) + windowPos, ImColor(255,0,0,100));
+    drawList->AddRect(ImVec2(offset, paddingTop) + windowPos, ImVec2(offset + trackSize, paddingTop + trackHeight) + windowPos, ImColor(255,0,0,255));
+    // Draw float events assuming they are from 0 to 1.
+    for (TrackEvent<ofxOscMessage> event : *(channel.track)) {
+        if (event.message.getNumArgs() == 1 && event.message.getArgAsFloat(0)) {
+            auto positionX = drawerHelper.getPixelsFromMillis(event.millis);
+            auto messageValue = event.message.getArgAsFloat(0);
+            auto positionY = (trackHeight - messageValue * trackHeight) + paddingTop;
+            auto center = ImVec2(positionX, positionY) + windowPos;
+            drawList->AddCircleFilled(center, 2.f, ImColor(255,0,0,255));
+        }
+    }
 }
 
 void TracksWindowUI::drawRuler(ImDrawList *drawList, ImVec2 windowPos, float offsetTop, float lineLength) {

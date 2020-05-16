@@ -27,6 +27,7 @@ public:
     int getTimeMarkerPosition() const;
 
     uint64_t getMillisFromPixels(float pixels);
+    float getPixelsFromMillis(u_int64_t millis) const;
 
 private:
     uint64_t maxTime;
@@ -35,8 +36,6 @@ private:
     int currentWindowWidth = 0;
 
     std::string createTimecodeString(int seconds) const;
-
-    float calculatePixelPosition(int seconds) const;
 
     RulerData getDataPoint(int seconds) const;
 

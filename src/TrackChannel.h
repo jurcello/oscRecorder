@@ -22,8 +22,6 @@ public:
     TrackChannel();
     OscTrackPlayerRef player;
     OscTrackRecorderRef recorder;
-
-private:
     OscTrackRef track;
 };
 
