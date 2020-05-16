@@ -26,6 +26,8 @@ public:
 
     int getTimeMarkerPosition() const;
 
+    uint64_t getMillisFromPixels(float pixels);
+
 private:
     uint64_t maxTime;
     float pixelsPerSecond;

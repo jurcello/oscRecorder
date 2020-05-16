@@ -157,4 +157,15 @@ TEST_CASE("The position of the content can be centered based on the time", "[Tra
 
 }
 
+TEST_CASE("A pixel position can be transformed to a millisecond value" "[TrackDrawerHelper]") {
+    TrackDrawerHelper trackDrawer;
+    trackDrawer.setPixelsPerSecond(100.f);
+    trackDrawer.setMaxTimeMillis(secondsToMillis(200));
+    REQUIRE(trackDrawer.getMillisFromPixels(0) == 0);
+    REQUIRE(trackDrawer.getMillisFromPixels(100) == 1000);
+    REQUIRE(trackDrawer.getMillisFromPixels(200) == 2000);
+    trackDrawer.setPixelsPerSecond(50.f);
+    REQUIRE(trackDrawer.getMillisFromPixels(200) == 4000);
+}
+
 #pragma clang diagnostic pop

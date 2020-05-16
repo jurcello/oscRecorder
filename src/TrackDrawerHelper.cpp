@@ -78,3 +78,7 @@ float TrackDrawerHelper::getScrollOffset() {
     float maxOffset = maxTime * pixelsPerSecond / 1000 - currentWindowWidth;
     return std::max(0.f, std::min(offset, maxOffset));
 }
+
+uint64_t TrackDrawerHelper::getMillisFromPixels(float pixels) {
+    return static_cast<uint64_t>((pixels / pixelsPerSecond) * 1000.f);
+}

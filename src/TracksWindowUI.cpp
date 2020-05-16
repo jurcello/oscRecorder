@@ -5,6 +5,7 @@
 #include "TracksWindowUI.h"
 #include "ofxImGui.h"
 #include "timeline.h"
+#include "ofLog.h"
 
 void TracksWindowUI::draw(Timeline &timeline) {
     drawerHelper.setMaxTimeMillis(70*1000);
@@ -12,6 +13,7 @@ void TracksWindowUI::draw(Timeline &timeline) {
     drawerHelper.setCurrentTimeMillis(timeline.elapsedMillis());
     ImGui::SetNextWindowContentSize(ImVec2(drawerHelper.getContentSize(), 100.f));
     ImGui::Begin("Track window", NULL, ImGuiWindowFlags_HorizontalScrollbar);
+
     auto windowWidth = ImGui::GetWindowWidth();
     drawerHelper.setCurrentWindowWidth(static_cast<int>(windowWidth));
     if (playing && following) {
@@ -19,6 +21,18 @@ void TracksWindowUI::draw(Timeline &timeline) {
     }
     ImDrawList* drawList = ImGui::GetWindowDrawList();
     auto p = ImGui::GetWindowPos() - ImVec2(ImGui::GetScrollX(), 0.f);
+
+    bool mouseInWindow = false;
+    ImGuiIO& io = ImGui::GetIO();
+    if (ImGui::IsMousePosValid())
+        if ((io.MousePos.x > ImGui::GetWindowPos().x && io.MousePos.y > ImGui::GetWindowPos().y) &&
+                (io.MousePos.x < ImGui::GetWindowPos().x + ImGui::GetWindowSize().x && io.MousePos.y < ImGui::GetWindowPos().y + ImGui::GetWindowSize().y)) {
+            auto mousePosInContent = io.MousePos - p;
+            if (ImGui::IsMouseClicked(0)) {
+                auto millis = drawerHelper.getMillisFromPixels(mousePosInContent.x);
+                timeline.setCurrentMillis(millis);
+            }
+        }
 
     drawRuler(drawList, p, 20.f, 20.f);
     drawTracks(drawList, p);
