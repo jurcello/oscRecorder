@@ -20,25 +20,30 @@ void TracksWindowUI::draw(Timeline &timeline) {
         ImGui::SetScrollX(drawerHelper.getScrollOffset());
     }
     ImDrawList* drawList = ImGui::GetWindowDrawList();
-    auto p = ImGui::GetWindowPos() - ImVec2(ImGui::GetScrollX(), 0.f);
+    auto windowLeftTop = ImGui::GetWindowPos();
+    auto windowBottomRight = windowLeftTop + ImGui::GetWindowSize();
+    auto p = windowLeftTop - ImVec2(ImGui::GetScrollX(), 0.f);
 
-    bool mouseInWindow = false;
     ImGuiIO& io = ImGui::GetIO();
-    if (ImGui::IsMousePosValid())
-        if ((io.MousePos.x > ImGui::GetWindowPos().x && io.MousePos.y > ImGui::GetWindowPos().y) &&
-                (io.MousePos.x < ImGui::GetWindowPos().x + ImGui::GetWindowSize().x && io.MousePos.y < ImGui::GetWindowPos().y + ImGui::GetWindowSize().y)) {
-            auto mousePosInContent = io.MousePos - p;
-            if (ImGui::IsMouseClicked(0)) {
-                auto millis = drawerHelper.getMillisFromPixels(mousePosInContent.x);
-                timeline.setCurrentMillis(millis);
-            }
+    if (ImGui::IsMousePosValid()) {
+        auto mousePos = io.MousePos;
+        if (mouseIsInsideWindow(mousePos, windowLeftTop, windowBottomRight) && ImGui::IsMouseClicked(0))
+        {
+            auto mousePosInContent = mousePos - p;
+            timeline.setCurrentMillis(drawerHelper.getMillisFromPixels(mousePosInContent.x));
         }
+    }
 
     drawRuler(drawList, p, 20.f, 20.f);
     drawTracks(drawList, p);
     drawPlayHead(drawList, p);
 
     ImGui::End();
+}
+
+bool TracksWindowUI::mouseIsInsideWindow(const ImVec2 &mousePos, const ImVec2 &windowLeftTop, const glm::vec2 &windowBottomRight) const {
+    return (mousePos.x > windowLeftTop.x && mousePos.y > windowLeftTop.y) &&
+                    (mousePos.x < windowBottomRight.x && mousePos.y < windowBottomRight.y);
 }
 
 void TracksWindowUI::drawPlayHead(ImDrawList *drawList, const glm::vec2 &windowPos) const {

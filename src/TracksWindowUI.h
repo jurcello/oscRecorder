@@ -20,6 +20,8 @@ private:
     void drawRuler(ImDrawList *drawList, ImVec2 windowPos, float offsetTop, float lineLength);
     void drawTracks(ImDrawList *drawList, const glm::vec2 &windowPos) const;
     void drawPlayHead(ImDrawList *drawList, const glm::vec2 &windowPos) const;
+
+    bool mouseIsInsideWindow(const ImVec2 &mousePos, const ImVec2 &windowLeftTop, const glm::vec2 &windowBottomRight) const;
 };
 
 #endif //OSCRECORDER_TRACKSWINDOWUI_H

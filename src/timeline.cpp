@@ -84,5 +84,10 @@ std::string Timeline::timecode() {
 }
 
 void Timeline::setCurrentMillis(u_int64_t millis) {
-    mStartTime = mEndTime - std::chrono::milliseconds(millis);
+    if (running()) {
+        mStartTime = std::chrono::system_clock::now() - std::chrono::milliseconds(millis);
+    }
+    else {
+        mStartTime = mEndTime - std::chrono::milliseconds(millis);
+    }
 }
