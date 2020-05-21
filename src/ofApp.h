@@ -6,6 +6,7 @@
 #include "TrackChannel.h"
 #include "ofxImGui.h"
 #include "TimelineUI.h"
+#include "TracksWindowUI.h"
 
 #define IN_PORT 9900
 #define OUT_PORT 1100
@@ -39,5 +40,6 @@ private:
     ofxOscMessage lastMessage;
 
     TimelineUIRef timelineUI;
+    TracksWindowUI tracksUI;
     ofxImGui::Gui gui;
 };

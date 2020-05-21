@@ -27,7 +27,9 @@ public:
     uint32_t seconds();
     uint32_t millis();
     std::string timecode();
-    
+
+    void setCurrentMillis(u_int64_t millis);
+
 private:
     bool isRunning;
     std::chrono::time_point<std::chrono::system_clock> mStartTime;

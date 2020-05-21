@@ -50,6 +50,8 @@ void ofApp::drawUI() {
     gui.begin();
     {
         timelineUI->drawUi();
+        tracksUI.draw(timeline, trackChannel);
+        tracksUI.playing = timeline.running();
     }
     gui.end();
 }
