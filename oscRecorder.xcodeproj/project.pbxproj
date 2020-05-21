@@ -12,20 +12,22 @@
 		0090B479605B26E7C387B02D /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C525795C6CCB99616535318 /* imgui_widgets.cpp */; };
 		016BB55A143AD429330F07DB /* Gui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0E2047B4D03D5151730B52B /* Gui.cpp */; };
 		0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3AA0D4FAA89D0F8A0E545 /* OscReceivedElements.cpp */; };
-		19C87089F240139551DC5F51 /* timeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09624DCA137DDE2B9AF0C437 /* timeline.cpp */; };
+		19C8704495ECD2244C7C1ACB /* timeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87CD5621FF798372985D1 /* timeline.cpp */; };
+		19C871A63875498B6DB1B5EA /* RulerData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87289B5029A84885BA0A5 /* RulerData.cpp */; };
 		19C871CEA4BCEC18BCB435A6 /* tests-main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87E609C1E3E3AA01ED0E2 /* tests-main.cpp */; };
 		19C872547C14DDC0D68C1182 /* test-TrackDrawerHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C8782E64E50F88531B8406 /* test-TrackDrawerHelper.cpp */; };
-		19C8726D9446CE39A6B06E93 /* RulerData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C872E53026AF4D61C98862 /* RulerData.cpp */; };
-		19C87321C0DC3B7A18B9F833 /* TracksWindowUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87906E568B3D53F2B010B /* TracksWindowUI.cpp */; };
-		19C8745BB1391F364CAC737D /* RulerData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C872E53026AF4D61C98862 /* RulerData.cpp */; };
 		19C8747D0B143AC6E6975C65 /* test-timeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C8718A4F16FE1BC56ABE42 /* test-timeline.cpp */; };
 		19C874EC799BB3F265CE7BA3 /* test-track.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C877AADE122C33E24196B4 /* test-track.cpp */; };
-		19C8775788A324F63BDA0E87 /* TimelineUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C8744C5AC6CB416D2C3140 /* TimelineUI.cpp */; };
-		19C877CE46AFA7D10A344291 /* TrackDrawerHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C8711F41DA346BDB8C8C32 /* TrackDrawerHelper.cpp */; };
+		19C875C12D8EFEE940C7D608 /* TimelineUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C874911CD3F452820A3B06 /* TimelineUI.cpp */; };
 		19C877E1ACC455CE91C1B42A /* test-track-recorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87D549363EB8688D87B1E /* test-track-recorder.cpp */; };
-		19C87AF24ABD758FC84226D0 /* TrackDrawerHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C8711F41DA346BDB8C8C32 /* TrackDrawerHelper.cpp */; };
+		19C87A0BD9230C15DE5DDC82 /* TracksWindowUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C8714E53713CDE7EE248BF /* TracksWindowUI.cpp */; };
+		19C87C2FB8DA42D7F5168C04 /* RulerData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87289B5029A84885BA0A5 /* RulerData.cpp */; };
 		19C87C7A1CE578143B4B906F /* test-track-player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87B78F02D38DDCD767941 /* test-track-player.cpp */; };
+		19C87C7FC59565BB8F65B2A5 /* TrackDrawerHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87DD5D2160322593D755A /* TrackDrawerHelper.cpp */; };
+		19C87DF137726F9CAC62F21C /* TrackDrawerHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87DD5D2160322593D755A /* TrackDrawerHelper.cpp */; };
+		19C87EDE0AA165BE12431D35 /* TrackChannel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87B7350EA55A34BDAFE3F /* TrackChannel.cpp */; };
 		19C87F357AB9E1316DF00ED5 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C8707F95E8094C5F800CCF /* Utils.cpp */; };
+		19C87FF0DD7A4457DB9BD840 /* timeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87CD5621FF798372985D1 /* timeline.cpp */; };
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
 		462C212713EFFA5383B35DAB /* EngineGLFW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C686ADB50E8F79292BA80 /* EngineGLFW.cpp */; };
 		483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D67A00EB899FAC09430597 /* ofxLabel.cpp */; };
@@ -39,7 +41,6 @@
 		63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50DF87D612C5AAE17AAFA6C0 /* ofxXmlSettings.cpp */; };
 		640279EE111671BD026CB013 /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2FAC65C491D4231379F3298 /* ofxOscReceiver.cpp */; };
 		67FE4C7B15C2F0478C8126C2 /* NetworkingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B361208CD4107E479F04E7B /* NetworkingUtils.cpp */; };
-		69C5148EFC8B4EFDEF41AC50 /* timeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09624DCA137DDE2B9AF0C437 /* timeline.cpp */; };
 		6B3BB6E115053982E13C175C /* EngineVk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91D1568F53D3EC80AC718E7B /* EngineVk.cpp */; };
 		72A929D3561B8232A182ABFC /* ofxOscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EEFA3DA3526E9CDD9C21F9 /* ofxOscBundle.cpp */; };
 		837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15F2C6477A769C03A56D1401 /* ofxSlider.cpp */; };
@@ -57,7 +58,6 @@
 		B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 802251BAF1B35B1D67B32FD0 /* ofxSliderGroup.cpp */; };
 		C2114978C2A333BA9867109F /* DefaultTheme.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9A7E144D697FCBB4216A73E /* DefaultTheme.cpp */; };
 		C4782ECC372420ACE0615B74 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC8881B3C8C0A1C45F042E7A /* OscPrintReceivedElements.cpp */; };
-		D559CB38E26D889E028B5780 /* TrackChannel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DC37FAC2EDD87530DDD6B /* TrackChannel.cpp */; };
 		DBBE189ECD171A97DCF46C6A /* BaseEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7C7BDAD29F580A47FF56B52 /* BaseEngine.cpp */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
@@ -87,11 +87,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		007FD47FDD1CCF8792239C6C /* timeline.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = timeline.h; path = src/timeline.h; sourceTree = SOURCE_ROOT; };
 		00D6D32B84B099226431108C /* ofxOsc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxOsc.h; path = ../../../addons/ofxOsc/src/ofxOsc.h; sourceTree = SOURCE_ROOT; };
 		01DCC0911400F9ACF5B65578 /* ofxXmlSettings.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxXmlSettings.h; path = ../../../addons/ofxXmlSettings/src/ofxXmlSettings.h; sourceTree = SOURCE_ROOT; };
 		029684CF678F70F6D3537A29 /* OscOutboundPacketStream.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OscOutboundPacketStream.h; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscOutboundPacketStream.h; sourceTree = SOURCE_ROOT; };
-		09624DCA137DDE2B9AF0C437 /* timeline.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = timeline.cpp; path = src/timeline.cpp; sourceTree = SOURCE_ROOT; };
 		0A1DAC09F322AE313A40706D /* ofxToggle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxToggle.h; path = ../../../addons/ofxGui/src/ofxToggle.h; sourceTree = SOURCE_ROOT; };
 		0AED834CE4DEC5260AF302A2 /* ofxOscParameterSync.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxOscParameterSync.cpp; path = ../../../addons/ofxOsc/src/ofxOscParameterSync.cpp; sourceTree = SOURCE_ROOT; };
 		12EBC5773B81D5E37E068E24 /* imgui_internal.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = imgui_internal.h; path = ../../../addons/ofxImGui/libs/imgui/src/imgui_internal.h; sourceTree = SOURCE_ROOT; };
@@ -100,22 +98,26 @@
 		181D363B6DD54D1FA6309C43 /* ofxColorPicker.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxColorPicker.cpp; path = ../../../addons/ofxGui/src/ofxColorPicker.cpp; sourceTree = SOURCE_ROOT; };
 		19C8707F95E8094C5F800CCF /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 		19C870F95B5A92AA96054796 /* catch.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = catch.hh; sourceTree = "<group>"; };
-		19C8711F41DA346BDB8C8C32 /* TrackDrawerHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrackDrawerHelper.cpp; sourceTree = "<group>"; };
+		19C8714E53713CDE7EE248BF /* TracksWindowUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TracksWindowUI.cpp; sourceTree = "<group>"; };
 		19C8718A4F16FE1BC56ABE42 /* test-timeline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-timeline.cpp"; sourceTree = "<group>"; };
-		19C872E53026AF4D61C98862 /* RulerData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RulerData.cpp; sourceTree = "<group>"; };
-		19C873E7A7414D31C33E757F /* TrackDrawerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackDrawerHelper.h; sourceTree = "<group>"; };
-		19C8744C5AC6CB416D2C3140 /* TimelineUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimelineUI.cpp; sourceTree = "<group>"; };
+		19C87289B5029A84885BA0A5 /* RulerData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RulerData.cpp; sourceTree = "<group>"; };
+		19C874911CD3F452820A3B06 /* TimelineUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimelineUI.cpp; sourceTree = "<group>"; };
+		19C87546D0AF6C1B6C4F684B /* TracksWindowUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TracksWindowUI.h; sourceTree = "<group>"; };
 		19C877AADE122C33E24196B4 /* test-track.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-track.cpp"; sourceTree = "<group>"; };
 		19C8782E64E50F88531B8406 /* test-TrackDrawerHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-TrackDrawerHelper.cpp"; sourceTree = "<group>"; };
-		19C878A20F007BE76807C4EF /* TracksWindowUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TracksWindowUI.h; sourceTree = "<group>"; };
-		19C878C9E2B3312093E19C6D /* TimelineUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineUI.h; sourceTree = "<group>"; };
-		19C87906E568B3D53F2B010B /* TracksWindowUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TracksWindowUI.cpp; sourceTree = "<group>"; };
 		19C87A00885649616F995EFF /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		19C87A847F85A0AFD8B13F4E /* TimelineUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineUI.h; sourceTree = "<group>"; };
+		19C87B0F49BD69283E696F5C /* timeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timeline.h; sourceTree = "<group>"; };
+		19C87B7350EA55A34BDAFE3F /* TrackChannel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrackChannel.cpp; sourceTree = "<group>"; };
 		19C87B78F02D38DDCD767941 /* test-track-player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-track-player.cpp"; sourceTree = "<group>"; };
-		19C87BB181476A6DFCD55DC9 /* RulerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulerData.h; sourceTree = "<group>"; };
+		19C87B89EDF8C5BD4EAE9174 /* RulerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulerData.h; sourceTree = "<group>"; };
+		19C87CD5621FF798372985D1 /* timeline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = timeline.cpp; sourceTree = "<group>"; };
 		19C87D549363EB8688D87B1E /* test-track-recorder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-track-recorder.cpp"; sourceTree = "<group>"; };
+		19C87DD5D2160322593D755A /* TrackDrawerHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrackDrawerHelper.cpp; sourceTree = "<group>"; };
 		19C87E314BCD950A51C070EA /* Tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		19C87E609C1E3E3AA01ED0E2 /* tests-main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "tests-main.cpp"; sourceTree = "<group>"; };
+		19C87EA90DFD54ACE67FB4FC /* TrackDrawerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackDrawerHelper.h; sourceTree = "<group>"; };
+		19C87F1BC9E234601A9043BE /* TrackChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackChannel.h; sourceTree = "<group>"; };
 		1C0DA2561397A7DE0246858B /* ofxGuiGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxGuiGroup.h; path = ../../../addons/ofxGui/src/ofxGuiGroup.h; sourceTree = SOURCE_ROOT; };
 		1ECDBB696E32EFCC3C003549 /* TrackRecorder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TrackRecorder.h; path = src/Track/TrackRecorder.h; sourceTree = SOURCE_ROOT; };
 		20F35AFADAF0068B067E713F /* OscReceivedElements.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OscReceivedElements.h; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscReceivedElements.h; sourceTree = SOURCE_ROOT; };
@@ -129,7 +131,6 @@
 		3A9013A02246381F14572188 /* EngineGLFW.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = EngineGLFW.h; path = ../../../addons/ofxImGui/src/EngineGLFW.h; sourceTree = SOURCE_ROOT; };
 		3AB24D308736280A07568671 /* imconfig.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = imconfig.h; path = ../../../addons/ofxImGui/src/imconfig.h; sourceTree = SOURCE_ROOT; };
 		3B361208CD4107E479F04E7B /* NetworkingUtils.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = NetworkingUtils.cpp; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/posix/NetworkingUtils.cpp; sourceTree = SOURCE_ROOT; };
-		3B3DC37FAC2EDD87530DDD6B /* TrackChannel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TrackChannel.cpp; path = src/TrackChannel.cpp; sourceTree = SOURCE_ROOT; };
 		3C525795C6CCB99616535318 /* imgui_widgets.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = imgui_widgets.cpp; path = ../../../addons/ofxImGui/libs/imgui/src/imgui_widgets.cpp; sourceTree = SOURCE_ROOT; };
 		444657A12E59D0ED86981498 /* TimerListener.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TimerListener.h; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/TimerListener.h; sourceTree = SOURCE_ROOT; };
 		44B351490B620D04E1E7C52D /* ofxInputField.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxInputField.cpp; path = ../../../addons/ofxGui/src/ofxInputField.cpp; sourceTree = SOURCE_ROOT; };
@@ -144,7 +145,6 @@
 		63A47AC60FFAFC3BF093EC0F /* OscOutboundPacketStream.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = OscOutboundPacketStream.cpp; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscOutboundPacketStream.cpp; sourceTree = SOURCE_ROOT; };
 		64438C8902B287DA10BCD63B /* ofxImGuiLoggerChannel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxImGuiLoggerChannel.cpp; path = ../../../addons/ofxImGui/src/ofxImGuiLoggerChannel.cpp; sourceTree = SOURCE_ROOT; };
 		65EEFA3DA3526E9CDD9C21F9 /* ofxOscBundle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxOscBundle.cpp; path = ../../../addons/ofxOsc/src/ofxOscBundle.cpp; sourceTree = SOURCE_ROOT; };
-		67A64E5F473DC8F98A95DC7F /* TrackChannel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TrackChannel.h; path = src/TrackChannel.h; sourceTree = SOURCE_ROOT; };
 		6B65E6930994CC4B2D2B8B33 /* OscPacketListener.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OscPacketListener.h; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscPacketListener.h; sourceTree = SOURCE_ROOT; };
 		6CF9B1FD213484DDDB7AE362 /* imgui.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = imgui.cpp; path = ../../../addons/ofxImGui/libs/imgui/src/imgui.cpp; sourceTree = SOURCE_ROOT; };
 		748079BFB4742DB856EABE40 /* Helpers.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Helpers.h; path = ../../../addons/ofxImGui/src/Helpers.h; sourceTree = SOURCE_ROOT; };
@@ -402,6 +402,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19C871E2BEE034DC76F829B4 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				19C87A847F85A0AFD8B13F4E /* TimelineUI.h */,
+				19C874911CD3F452820A3B06 /* TimelineUI.cpp */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		19C872E7950B1D741D917993 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				19C87B0F49BD69283E696F5C /* timeline.h */,
+				19C87289B5029A84885BA0A5 /* RulerData.cpp */,
+				19C87B89EDF8C5BD4EAE9174 /* RulerData.h */,
+				19C87CD5621FF798372985D1 /* timeline.cpp */,
+				19C871E2BEE034DC76F829B4 /* UI */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
 		19C8740030B520D718A35247 /* tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +435,15 @@
 				19C8718A4F16FE1BC56ABE42 /* test-timeline.cpp */,
 			);
 			path = tests;
+			sourceTree = "<group>";
+		};
+		19C87C209827AF5D232F8418 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				19C87546D0AF6C1B6C4F684B /* TracksWindowUI.h */,
+				19C8714E53713CDE7EE248BF /* TracksWindowUI.cpp */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		19C87D1F16200AA6E6D1C5DE /* Products */ = {
@@ -482,6 +512,11 @@
 				5CFCD1A73CFC2504E65CCB91 /* TrackPlayer.h */,
 				F34615B9E2C4766580F9AAB6 /* Track.h */,
 				1ECDBB696E32EFCC3C003549 /* TrackRecorder.h */,
+				19C87B7350EA55A34BDAFE3F /* TrackChannel.cpp */,
+				19C87F1BC9E234601A9043BE /* TrackChannel.h */,
+				19C87DD5D2160322593D755A /* TrackDrawerHelper.cpp */,
+				19C87EA90DFD54ACE67FB4FC /* TrackDrawerHelper.h */,
+				19C87C209827AF5D232F8418 /* UI */,
 			);
 			name = Track;
 			sourceTree = "<group>";
@@ -969,20 +1004,9 @@
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				602669A74EC14E10BCA27475 /* Track */,
-				3B3DC37FAC2EDD87530DDD6B /* TrackChannel.cpp */,
-				67A64E5F473DC8F98A95DC7F /* TrackChannel.h */,
-				09624DCA137DDE2B9AF0C437 /* timeline.cpp */,
-				007FD47FDD1CCF8792239C6C /* timeline.h */,
-				19C8744C5AC6CB416D2C3140 /* TimelineUI.cpp */,
-				19C878C9E2B3312093E19C6D /* TimelineUI.h */,
 				19C8707F95E8094C5F800CCF /* Utils.cpp */,
 				19C87A00885649616F995EFF /* Utils.h */,
-				19C87906E568B3D53F2B010B /* TracksWindowUI.cpp */,
-				19C878A20F007BE76807C4EF /* TracksWindowUI.h */,
-				19C8711F41DA346BDB8C8C32 /* TrackDrawerHelper.cpp */,
-				19C873E7A7414D31C33E757F /* TrackDrawerHelper.h */,
-				19C872E53026AF4D61C98862 /* RulerData.cpp */,
-				19C87BB181476A6DFCD55DC9 /* RulerData.h */,
+				19C872E7950B1D741D917993 /* Timeline */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1131,10 +1155,10 @@
 				19C874EC799BB3F265CE7BA3 /* test-track.cpp in Sources */,
 				19C871CEA4BCEC18BCB435A6 /* tests-main.cpp in Sources */,
 				19C872547C14DDC0D68C1182 /* test-TrackDrawerHelper.cpp in Sources */,
-				19C877CE46AFA7D10A344291 /* TrackDrawerHelper.cpp in Sources */,
-				19C8745BB1391F364CAC737D /* RulerData.cpp in Sources */,
 				19C8747D0B143AC6E6975C65 /* test-timeline.cpp in Sources */,
-				19C87089F240139551DC5F51 /* timeline.cpp in Sources */,
+				19C87DF137726F9CAC62F21C /* TrackDrawerHelper.cpp in Sources */,
+				19C871A63875498B6DB1B5EA /* RulerData.cpp in Sources */,
+				19C8704495ECD2244C7C1ACB /* timeline.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1144,8 +1168,6 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
-				D559CB38E26D889E028B5780 /* TrackChannel.cpp in Sources */,
-				69C5148EFC8B4EFDEF41AC50 /* timeline.cpp in Sources */,
 				856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */,
 				5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */,
 				853E0BA2F448076739446874 /* ofxColorPicker.cpp in Sources */,
@@ -1184,11 +1206,13 @@
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,
 				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
-				19C8775788A324F63BDA0E87 /* TimelineUI.cpp in Sources */,
 				19C87F357AB9E1316DF00ED5 /* Utils.cpp in Sources */,
-				19C87321C0DC3B7A18B9F833 /* TracksWindowUI.cpp in Sources */,
-				19C87AF24ABD758FC84226D0 /* TrackDrawerHelper.cpp in Sources */,
-				19C8726D9446CE39A6B06E93 /* RulerData.cpp in Sources */,
+				19C87EDE0AA165BE12431D35 /* TrackChannel.cpp in Sources */,
+				19C87C7FC59565BB8F65B2A5 /* TrackDrawerHelper.cpp in Sources */,
+				19C87A0BD9230C15DE5DDC82 /* TracksWindowUI.cpp in Sources */,
+				19C87C2FB8DA42D7F5168C04 /* RulerData.cpp in Sources */,
+				19C87FF0DD7A4457DB9BD840 /* timeline.cpp in Sources */,
+				19C875C12D8EFEE940C7D608 /* TimelineUI.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
