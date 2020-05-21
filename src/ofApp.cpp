@@ -10,14 +10,6 @@ void ofApp::setup(){
     timelineUI = TimelineUI::create(timeline, recording);
     ofxOscMessage m;
     lastMessage = m;
-
-    // Delete later. Only for testing.
-    for (int timeCode = 0; timeCode < 20000; timeCode += 500) {
-        ofxOscMessage dummyMessage;
-        dummyMessage.setAddress("/test");
-        dummyMessage.addFloatArg(timeCode / 20000.f);
-        trackChannel.recorder->recordMessage(timeCode, dummyMessage);
-    }
 }
 
 //--------------------------------------------------------------

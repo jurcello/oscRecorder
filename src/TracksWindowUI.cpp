@@ -16,7 +16,7 @@ void TracksWindowUI::draw(Timeline &timeline, TrackChannel channel) {
 
     auto windowWidth = ImGui::GetWindowWidth();
     drawerHelper.setCurrentWindowWidth(static_cast<int>(windowWidth));
-    if (playing && following) {
+    if ((playing && following) || drawerHelper.getScrollOffset() == 0) {
         ImGui::SetScrollX(drawerHelper.getScrollOffset());
     }
     ImDrawList* drawList = ImGui::GetWindowDrawList();
@@ -53,20 +53,22 @@ void TracksWindowUI::drawPlayHead(ImDrawList *drawList, const glm::vec2 &windowP
 }
 
 void TracksWindowUI::drawTracks(ImDrawList *drawList, const glm::vec2 &windowPos, TrackChannel channel) const {
-    auto offset = 0.f;
-    auto trackSize = drawerHelper.getPixelsFromMillis(channel.player->timeLength());
-    auto paddingTop = 60.f;
-    auto trackHeight = 60.f;
-    drawList->AddRectFilled(ImVec2(offset, paddingTop) + windowPos, ImVec2(offset + trackSize, paddingTop + trackHeight) + windowPos, ImColor(255,0,0,100));
-    drawList->AddRect(ImVec2(offset, paddingTop) + windowPos, ImVec2(offset + trackSize, paddingTop + trackHeight) + windowPos, ImColor(255,0,0,255));
-    // Draw float events assuming they are from 0 to 1.
-    for (TrackEvent<ofxOscMessage> event : *(channel.track)) {
-        if (event.message.getNumArgs() == 1 && event.message.getArgAsFloat(0)) {
-            auto positionX = drawerHelper.getPixelsFromMillis(event.millis);
-            auto messageValue = event.message.getArgAsFloat(0);
-            auto positionY = (trackHeight - messageValue * trackHeight) + paddingTop;
-            auto center = ImVec2(positionX, positionY) + windowPos;
-            drawList->AddCircleFilled(center, 2.f, ImColor(255,0,0,255));
+    if (channel.track->size() > 0) {
+        auto offset = 0.f;
+        auto trackSize = drawerHelper.getPixelsFromMillis(channel.player->timeLength());
+        auto paddingTop = 60.f;
+        auto trackHeight = 60.f;
+        drawList->AddRectFilled(ImVec2(offset, paddingTop) + windowPos, ImVec2(offset + trackSize, paddingTop + trackHeight) + windowPos, ImColor(255, 0, 0, 100));
+        drawList->AddRect(ImVec2(offset, paddingTop) + windowPos, ImVec2(offset + trackSize, paddingTop + trackHeight) + windowPos, ImColor(255, 0, 0, 255));
+        // Draw float events assuming they are from 0 to 1.
+        for (TrackEvent<ofxOscMessage> event : *(channel.track)) {
+            if (event.message.getNumArgs() == 1 && event.message.getArgAsFloat(0)) {
+                auto positionX = drawerHelper.getPixelsFromMillis(event.millis);
+                auto messageValue = event.message.getArgAsFloat(0);
+                auto positionY = (trackHeight - messageValue * trackHeight) + paddingTop;
+                auto center = ImVec2(positionX, positionY) + windowPos;
+                drawList->AddCircleFilled(center, 2.f, ImColor(255, 0, 0, 255));
+            }
         }
     }
 }
