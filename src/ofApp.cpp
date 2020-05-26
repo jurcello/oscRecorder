@@ -91,7 +91,6 @@ void ofApp::keyPressed(int key){
         case 'r':
             // TODO: Make listener on timeline.
             timeline.reset();
-            trackChannel.player->rewind();
             break;
             
         case ' ':

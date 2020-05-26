@@ -15,17 +15,21 @@ template <typename MessageType>
 class TrackPlayer {
 public:
     TrackPlayer(Track<MessageType> *track)
-    :track(track), currentPosition(0)
+    :track(track), currentPosition(0), lastTime(0)
     {}
 
     MessageType getNextMessage(uint64_t time) {
         if (! this->hasMessages(time)) {
             throw noNewMessageException();
         }
+        lastTime = time;
         return track->getEventAt(currentPosition++).message;
     }
 
     bool hasMessages(uint64_t time) {
+        if (time < lastTime) {
+            this->seek(time);
+        }
         return currentPosition < track->size() && track->getEventAt(currentPosition).millis <= time;
     }
 
@@ -35,6 +39,7 @@ public:
 
     void rewind() {
         currentPosition = 0;
+        lastTime = 0;
     }
 
     uint64_t timeLength() {
@@ -44,6 +49,7 @@ public:
 private:
     Track<MessageType> *track;
     unsigned long currentPosition;
+    uint64_t lastTime;
 };
 
 

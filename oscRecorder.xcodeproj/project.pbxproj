@@ -15,19 +15,15 @@
 		125AB007D29CECBA2D2B3CE1 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A842FAA158FB434DF69D04F8 /* Utils.cpp */; };
 		19C8709B12D621044361AEA6 /* TrackWriterReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87DFE53093E5D474F6D2B /* TrackWriterReader.cpp */; };
 		19C8717A8C14DD0C6667D160 /* RulerData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADBE125D4C92922C704CBC55 /* RulerData.cpp */; };
-		19C8721218AF18BD7097338D /* ofFileUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E429630D2163EDD300A6A9E2 /* ofFileUtils.cpp */; };
 		19C8725D781D9DC7D0B0D48A /* TimelineUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C878755E64E7ABC8326547 /* TimelineUI.cpp */; };
 		19C8735738992DE6A0E60787 /* TracksWindowUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87A947F6ED89229B1296D /* TracksWindowUI.cpp */; };
 		19C874D5EF4075576E3B763B /* TrackDrawerHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E64904BF5E7B2802CBA0F268 /* TrackDrawerHelper.cpp */; };
 		19C875D48EBEBAB49C518FCD /* tests-main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C8709F87FB3E26A5ED18D6 /* tests-main.cpp */; };
 		19C875D5B0CEDAE1407CF2DF /* test-track.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C8737981D25F466B69ED09 /* test-track.cpp */; };
-		19C8790A4314F84C03BBBE77 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF49D76C45D5DB505A234880 /* ofxOscMessage.cpp */; };
 		19C87AD843BBA3478C5292CA /* test-track-player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87619D3EAC470EB8E9A4E /* test-track-player.cpp */; };
 		19C87BB78C08A7AAABCC007F /* test-timeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C8755AF1D1F5E4373BF9F0 /* test-timeline.cpp */; };
-		19C87C14BF53B93E276832DB /* TrackWriterReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87DFE53093E5D474F6D2B /* TrackWriterReader.cpp */; };
 		19C87E82079B9814CD023C58 /* timeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 804CF28AAFB76F32BE31A12E /* timeline.cpp */; };
 		19C87E9321E74D6739EEA8FE /* test-track-recorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C874531DBF7769367E41EF /* test-track-recorder.cpp */; };
-		19C87F0CD6E28482B79F8021 /* ofLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E42963072163EDD300A6A9E2 /* ofLog.cpp */; };
 		19C87F7BCF9DA23115D53598 /* test-TrackDrawerHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C8754E86E3A027E20ADE53 /* test-TrackDrawerHelper.cpp */; };
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
 		462C212713EFFA5383B35DAB /* EngineGLFW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C686ADB50E8F79292BA80 /* EngineGLFW.cpp */; };
@@ -1240,10 +1236,6 @@
 				19C874D5EF4075576E3B763B /* TrackDrawerHelper.cpp in Sources */,
 				19C87E82079B9814CD023C58 /* timeline.cpp in Sources */,
 				19C8717A8C14DD0C6667D160 /* RulerData.cpp in Sources */,
-				19C8790A4314F84C03BBBE77 /* ofxOscMessage.cpp in Sources */,
-				19C87F0CD6E28482B79F8021 /* ofLog.cpp in Sources */,
-				19C8721218AF18BD7097338D /* ofFileUtils.cpp in Sources */,
-				19C87C14BF53B93E276832DB /* TrackWriterReader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

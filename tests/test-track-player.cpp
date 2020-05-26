@@ -84,3 +84,17 @@ TEST_CASE("The track player has a timeLength method that returns the length in m
     uint64_t length = player.timeLength();
     REQUIRE(length == 200);
 }
+
+TEST_CASE("The track player seeks to the time if the hasMessages is called with a time lower than the last message", "[TrackPlayer]") {
+    FloatTrack track;
+    FloatPlayer player(&track);
+    track.addEvent(FloatEvent(5, .0f));
+    track.addEvent(FloatEvent(15, .1f));
+    track.addEvent(FloatEvent(25, .2f));
+    player.getNextMessage(25);
+    player.getNextMessage(25);
+    player.getNextMessage(25);
+    player.hasMessages(15);
+    REQUIRE(player.getNextMessage(15) == .1f);
+
+}
