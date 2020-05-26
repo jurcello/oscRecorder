@@ -16,21 +16,18 @@ public:
     TrackWriterReader(OscTrackRef track);
 
     void write(std::string path);
-
     void readFromFile(std::string path);
 
 private:
     OscTrackRef track;
     OscTrackRecorderRef recorder;
 
-    ofxJSONElement messageToJson(const TrackEvent<ofxOscMessage> &event) const;
-
-    ofxJSON argsToJson(const ofxOscMessage &m) const;
-
     void emptyTrack() const;
 
-    ofxOscMessage jsonToOscMessage(const ofxJSON &messageJson);
+    ofxJSONElement messageToJson(const TrackEvent<ofxOscMessage> &event) const;
+    ofxJSON argsToJson(const ofxOscMessage &m) const;
 
+    ofxOscMessage jsonToOscMessage(const ofxJSON &messageJson);
     void jsonArgsToOscMessage(ofxOscMessage &m, const Json::Value &jsonArgs) const;
 };
 
