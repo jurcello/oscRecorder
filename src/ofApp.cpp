@@ -1,4 +1,6 @@
 #include "ofApp.h"
+#include "TrackWriterReader.h"
+#include "ofSystemUtils.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -83,9 +85,33 @@ void ofApp::keyPressed(int key){
         
         case 'm':
             recording = !recording;
-            
+            break;
+
+        case 'w':
+            writeTrack();
+            break;
+
+        case 'l':
+            readTrack();
+
         default:
             break;
+    }
+}
+
+void ofApp::writeTrack() const {
+    ofFileDialogResult result = ofSystemSaveDialog("track.json", "Save");
+    if (result.bSuccess) {
+        TrackWriterReader writer(trackChannel.track);
+        writer.write(result.getPath());
+    }
+}
+
+void ofApp::readTrack() const {
+    ofFileDialogResult result = ofSystemLoadDialog("Load track");
+    if (result.bSuccess) {
+        TrackWriterReader reader(trackChannel.track);
+        reader.readFromFile(result.getPath());
     }
 }
 
