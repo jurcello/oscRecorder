@@ -42,4 +42,6 @@ private:
     TimelineUIRef timelineUI;
     TracksWindowUI tracksUI;
     ofxImGui::Gui gui;
+
+	void writeTrack() const;
 };
