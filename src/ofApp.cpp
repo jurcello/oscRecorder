@@ -1,5 +1,5 @@
 #include "ofApp.h"
-#include "TrackWriter.h"
+#include "TrackWriterReader.h"
 #include "ofSystemUtils.h"
 
 //--------------------------------------------------------------
@@ -12,14 +12,6 @@ void ofApp::setup(){
     timelineUI = TimelineUI::create(timeline, recording);
     ofxOscMessage m;
     lastMessage = m;
-
-    // Delete later. Only for testing.
-    for (int timeCode = 0; timeCode < 20000; timeCode += 500) {
-        ofxOscMessage dummyMessage;
-        dummyMessage.setAddress("/test");
-        dummyMessage.addFloatArg(timeCode / 20000.f);
-        trackChannel.recorder->recordMessage(timeCode, dummyMessage);
-    }
 }
 
 //--------------------------------------------------------------
@@ -99,43 +91,8 @@ void ofApp::keyPressed(int key){
             writeTrack();
             break;
 
-        case 'l': {
-            ofFileDialogResult result = ofSystemLoadDialog("Load track");
-            if (result.bSuccess) {
-                trackChannel.track->clear();
-                ofxJSON info;
-                info.open(result.getPath());
-                for (auto &json: info["messages"]) {
-                    ofxOscMessage m;
-                    string address = json["address"].asString();
-                    u_int64_t millis = static_cast<u_int64_t>(json["time"].asInt64());
-                    m.setAddress(address);
-
-                    for(auto & arg : json["args"]){
-                        int typeInt = arg["type"].asInt();
-                        ofxOscArgType type =ofxOscArgType(typeInt);
-
-                        switch (type) {
-                            case OFXOSC_TYPE_INT32: m.addIntArg(arg["value"].asInt()); break;
-                            case OFXOSC_TYPE_INT64: m.addInt64Arg(arg["value"].asInt64()); break;
-                            case OFXOSC_TYPE_FLOAT: m.addFloatArg(arg["value"].asFloat()); break;
-                            case OFXOSC_TYPE_DOUBLE: m.addDoubleArg(arg["value"].asDouble()); break;
-                            case OFXOSC_TYPE_STRING: m.addStringArg(arg["value"].asString()); break;
-                            case OFXOSC_TYPE_SYMBOL: m.addSymbolArg(arg["value"].asString()); break;
-                            case OFXOSC_TYPE_CHAR: m.addCharArg(char(arg["value"].asInt())); break;
-                            case OFXOSC_TYPE_MIDI_MESSAGE: m.addIntArg(arg["value"].asInt()); break;
-                            case OFXOSC_TYPE_TRUE: m.addBoolArg(arg["value"].asBool()); break;
-                            case OFXOSC_TYPE_FALSE: m.addBoolArg(arg["value"].asBool()); break;
-                            case OFXOSC_TYPE_TRIGGER: m.addBoolArg(arg["value"].asBool()); break;
-                            case OFXOSC_TYPE_TIMETAG:  m.addInt64Arg(arg["value"].asInt64()); break;
-                            case OFXOSC_TYPE_RGBA_COLOR: m.addIntArg(arg["value"].asInt()); break;
-                            default: ofLogError("ofxOscRecorder") << "type not supported!";
-                        }
-                    }
-                    trackChannel.recorder->recordMessage(millis, m);
-                }
-            }
-        }
+        case 'l':
+            readTrack();
 
         default:
             break;
@@ -145,8 +102,16 @@ void ofApp::keyPressed(int key){
 void ofApp::writeTrack() const {
     ofFileDialogResult result = ofSystemSaveDialog("track.json", "Save");
     if (result.bSuccess) {
-        TrackWriter writer(trackChannel.track);
+        TrackWriterReader writer(trackChannel.track);
         writer.write(result.getPath());
+    }
+}
+
+void ofApp::readTrack() const {
+    ofFileDialogResult result = ofSystemLoadDialog("Load track");
+    if (result.bSuccess) {
+        TrackWriterReader reader(trackChannel.track);
+        reader.readFromFile(result.getPath());
     }
 }
 

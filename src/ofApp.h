@@ -44,4 +44,6 @@ private:
     ofxImGui::Gui gui;
 
 	void writeTrack() const;
+
+    void readTrack() const;
 };
