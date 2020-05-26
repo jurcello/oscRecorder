@@ -9,10 +9,10 @@ TimelineUIRef TimelineUI::create(Timeline &timeline, bool &recording)
     return TimelineUIRef(new TimelineUI(timeline, recording));
 }
 
-void TimelineUI::drawUi() {
+void TimelineUI::drawUi(int top) {
     ImGui::Begin("Simple overlay", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoDecoration);
-    ImGui::SetWindowPos(ImVec2(0,0), ImGuiCond_Always);
-    ImGui::SetWindowSize(ImVec2(ofGetCurrentWindow()->getWidth(), 30), ImGuiCond_Always);
+    ImGui::SetWindowPos(ImVec2(0, top), ImGuiCond_Always);
+    ImGui::SetWindowSize(ImVec2(ofGetCurrentWindow()->getWidth(), 20), ImGuiCond_Always);
     {
         bool playing = timeline.running();
         if (playing) {
@@ -52,6 +52,10 @@ void TimelineUI::drawUi() {
     std::string inputMessageString = "Last input osc message: ";
     inputMessageString += Utils::oscMessageToString(inputMessage);
     ImGui::Text(inputMessageString.c_str());
+    ImGui::SameLine(0.f, 4.f);
+    std::string outputMessageString = "Last output osc message: ";
+    outputMessageString += Utils::oscMessageToString(outputMessage);
+    ImGui::Text(outputMessageString.c_str());
     ImGui::End();
 }
 
@@ -63,4 +67,8 @@ TimelineUI::TimelineUI(Timeline &timeline, bool &recording)
 
 void TimelineUI::setInputMessage(ofxOscMessage message) {
     inputMessage = message;
+}
+
+void TimelineUI::setOutputMessage(ofxOscMessage &outputMessage) {
+    TimelineUI::outputMessage = outputMessage;
 }

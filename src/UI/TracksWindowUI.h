@@ -7,12 +7,13 @@
 
 #include "TrackDrawerHelper.h"
 #include "imgui.h"
+#include "ofMain.h"
 #include "timeline.h"
 #include "TrackChannel.h"
 
 class TracksWindowUI {
 public:
-    void draw(Timeline &timeline, TrackChannel channel);
+    void draw(Timeline &timeline, TrackChannel channel, int marginTop);
     bool playing;
     bool following = true;
 
@@ -21,8 +22,11 @@ private:
     void drawRuler(ImDrawList *drawList, ImVec2 windowPos, float offsetTop, float lineLength);
     void drawTracks(ImDrawList *drawList, const glm::vec2 &windowPos, TrackChannel channel) const;
     void drawPlayHead(ImDrawList *drawList, const glm::vec2 &windowPos) const;
-
     bool mouseIsInsideWindow(const ImVec2 &mousePos, const ImVec2 &windowLeftTop, const glm::vec2 &windowBottomRight) const;
+
+    int height = 100;
+public:
+    void setHeight(int height);
 };
 
 #endif //OSCRECORDER_TRACKSWINDOWUI_H

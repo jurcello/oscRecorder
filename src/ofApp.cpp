@@ -32,6 +32,7 @@ void ofApp::update(){
     if (timeline.running() && !recording) {
         while (trackChannel.player->hasMessages(timeline.elapsedMillis())) {
             lastMessage = trackChannel.player->getNextMessage(timeline.elapsedMillis());
+            timelineUI->setOutputMessage(lastMessage);
             sender.sendMessage(lastMessage);
         }
     }
@@ -39,23 +40,36 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    std::string rec = recording ? "recording" : "playing";
-    ofDrawBitmapString(rec, 20, 140);
-    if (lastMessage.getNumArgs() > 0) {
-        ofDrawBitmapString("Last osc message: " + lastMessage.getAddress() + ofToString(lastMessage.getArgAsFloat(0)), 20, 160);
-    }
-
     drawUI();
 }
 
 void ofApp::drawUI() {
     gui.begin();
     {
-        timelineUI->drawUi();
-        tracksUI.draw(timeline, trackChannel);
+        drawMainMenu();
+        timelineUI->drawUi(20);
+        tracksUI.setHeight(140);
+        tracksUI.draw(timeline, trackChannel, 80);
         tracksUI.playing = timeline.running();
     }
     gui.end();
+}
+
+void ofApp::drawMainMenu() const {
+    if (ImGui::BeginMainMenuBar()) {
+        if (ImGui::BeginMenu("File")) {
+            if (ImGui::MenuItem("Open"))
+            {
+                readTrack();
+            }
+            if (ImGui::MenuItem("Save"))
+            {
+                writeTrack();
+            }
+            ImGui::EndMenu();
+        }
+        ImGui::EndMainMenuBar();
+    }
 }
 
 //--------------------------------------------------------------
@@ -75,6 +89,7 @@ void ofApp::keyPressed(int key){
             break;
             
         case 'r':
+            // TODO: Make listener on timeline.
             timeline.reset();
             trackChannel.player->rewind();
             break;

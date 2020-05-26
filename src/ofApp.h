@@ -46,4 +46,6 @@ private:
 	void writeTrack() const;
 
     void readTrack() const;
+
+	void drawMainMenu() const;
 };
