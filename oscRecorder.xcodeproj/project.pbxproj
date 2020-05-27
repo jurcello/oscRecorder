@@ -22,6 +22,7 @@
 		19C8758515B9977A5565F8D1 /* TrackRecorder.h in Sources */ = {isa = PBXBuildFile; fileRef = 1ECDBB696E32EFCC3C003549 /* TrackRecorder.h */; };
 		19C875A30403D9B023CC90E8 /* test-track-recorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C8760393D3B9B0D3ECFF31 /* test-track-recorder.cpp */; };
 		19C875C5693C4B81B1C0BEF6 /* test-track-player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87EE614279FF564B04C32 /* test-track-player.cpp */; };
+		19C876FB9CDE5EA16BAF73A9 /* MidiTimecodeSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87CB157E0145F36D93564 /* MidiTimecodeSync.cpp */; };
 		19C877AEC6BE17EAABB46E3A /* RulerData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADBE125D4C92922C704CBC55 /* RulerData.cpp */; };
 		19C87A8D9988935D8D6C0889 /* test-TrackDrawerHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C87AD292F3984616685FB6 /* test-TrackDrawerHelper.cpp */; };
 		19C87AF290478024FD23D479 /* TrackPlayer.h in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCD1A73CFC2504E65CCB91 /* TrackPlayer.h */; };
@@ -120,9 +121,11 @@
 		19C87110049D182EE96C6311 /* tests-main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "tests-main.cpp"; sourceTree = "<group>"; };
 		19C875A85D48C00F7CD452F8 /* test-track.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-track.cpp"; sourceTree = "<group>"; };
 		19C8760393D3B9B0D3ECFF31 /* test-track-recorder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-track-recorder.cpp"; sourceTree = "<group>"; };
+		19C8783ADC187FE6A45D095A /* MidiTimecodeSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidiTimecodeSync.h; sourceTree = "<group>"; };
 		19C8795C7E4541CC52A60E39 /* catch.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = catch.hh; sourceTree = "<group>"; };
 		19C87AD292F3984616685FB6 /* test-TrackDrawerHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-TrackDrawerHelper.cpp"; sourceTree = "<group>"; };
 		19C87BED4409BFF196DD3D3D /* tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tests; sourceTree = BUILT_PRODUCTS_DIR; };
+		19C87CB157E0145F36D93564 /* MidiTimecodeSync.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MidiTimecodeSync.cpp; sourceTree = "<group>"; };
 		19C87E33315525B99472D3A1 /* test-timeline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-timeline.cpp"; sourceTree = "<group>"; };
 		19C87EE614279FF564B04C32 /* test-track-player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-track-player.cpp"; sourceTree = "<group>"; };
 		1C0DA2561397A7DE0246858B /* ofxGuiGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxGuiGroup.h; path = ../../../addons/ofxGui/src/ofxGuiGroup.h; sourceTree = SOURCE_ROOT; };
@@ -479,6 +482,15 @@
 				19C87AD292F3984616685FB6 /* test-TrackDrawerHelper.cpp */,
 			);
 			path = TrackDrawers;
+			sourceTree = "<group>";
+		};
+		19C87DA21DC5E88BA45B8371 /* MidiSync */ = {
+			isa = PBXGroup;
+			children = (
+				19C87CB157E0145F36D93564 /* MidiTimecodeSync.cpp */,
+				19C8783ADC187FE6A45D095A /* MidiTimecodeSync.h */,
+			);
+			path = MidiSync;
 			sourceTree = "<group>";
 		};
 		1F4FB5C423662B96ADFDCC0B /* ofxXmlSettings */ = {
@@ -1183,6 +1195,7 @@
 				E64904BF5E7B2802CBA0F268 /* TrackDrawerHelper.cpp */,
 				A538C190DF98535463D7AB60 /* Files */,
 				854A3753A47A7F8100D4B110 /* Timeline */,
+				19C87DA21DC5E88BA45B8371 /* MidiSync */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1413,6 +1426,7 @@
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,
 				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
+				19C876FB9CDE5EA16BAF73A9 /* MidiTimecodeSync.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
