@@ -19,6 +19,8 @@ public:
     void setup();
     void update();
     void newMidiMessage(ofxMidiMessage &message);
+    void enable();
+    void disable();
     void exit();
 private:
     MidiTimecodeSync(Timeline &timeline);
@@ -32,10 +34,10 @@ private:
     bool timecodeRunning = false; //< is the timecode sync running?
     long lastreceivedTimecodeMessage = 0; //< when last quarter frame message was received
     ofxMidiTimecodeFrame frame; //< timecode frame data, ie. H M S frame rate
+    bool enabled = false;
+
     bool timecodeWasRecentlyReceived() const;
-
     void setCurrentMillisToTimeline() const;
-
     void syncTimeline();
 };
 

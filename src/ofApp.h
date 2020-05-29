@@ -39,6 +39,7 @@ private:
     ofxOscReceiver receiver;
     ofxOscSender sender;
     bool recording;
+    bool syncSMPTE = false;
     TrackChannel trackChannel;
     ofxOscMessage lastMessage;
 

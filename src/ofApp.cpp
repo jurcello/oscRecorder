@@ -9,7 +9,7 @@ void ofApp::setup(){
     receiver.setup(IN_PORT);
     sender.setup("localhost", OUT_PORT);
     gui.setup();
-    timelineUI = TimelineUI::create(timeline, recording);
+    timelineUI = TimelineUI::create(timeline, recording, syncSMPTE);
     ofxOscMessage m;
     lastMessage = m;
 
@@ -38,6 +38,12 @@ void ofApp::update(){
             timelineUI->setOutputMessage(lastMessage);
             sender.sendMessage(lastMessage);
         }
+    }
+    if (syncSMPTE) {
+        timecodeSyncer->enable();
+    }
+    else {
+        timecodeSyncer->disable();
     }
     timecodeSyncer->update();
 }

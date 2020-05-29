@@ -38,7 +38,7 @@ bool MidiTimecodeSync::timecodeWasRecentlyReceived() const {
 }
 
 void MidiTimecodeSync::newMidiMessage(ofxMidiMessage &message) {
-    if(timecode.update(message.bytes)) {
+    if(timecode.update(message.bytes) && enabled) {
         timecodeUpdated = true;
         timecodeUpdateCount++;
         frame = timecode.getFrame();
@@ -57,7 +57,7 @@ void MidiTimecodeSync::newMidiMessage(ofxMidiMessage &message) {
 }
 
 void MidiTimecodeSync::syncTimeline() {
-    if (timecodeRunning && timecodeUpdateCount > frame.rate) {
+    if (timecodeRunning && timecodeUpdateCount > frame.rate && enabled) {
         setCurrentMillisToTimeline();
         timecodeUpdateCount = 0;
     }
@@ -72,5 +72,13 @@ void MidiTimecodeSync::setCurrentMillisToTimeline() const {
 void MidiTimecodeSync::exit() {
     midiIn.closePort();
     midiIn.removeListener(this);
+}
+
+void MidiTimecodeSync::enable() {
+    enabled = true;
+}
+
+void MidiTimecodeSync::disable() {
+    enabled = false;
 }
 
