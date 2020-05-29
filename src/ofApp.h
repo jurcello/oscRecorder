@@ -7,11 +7,12 @@
 #include "ofxImGui.h"
 #include "TimelineUI.h"
 #include "TracksWindowUI.h"
+#include "MidiTimecodeSync.h"
 
 #define IN_PORT 9900
 #define OUT_PORT 1100
 
-class ofApp : public ofBaseApp{
+class ofApp : public ofBaseApp {
 
 	public:
 		void setup();
@@ -30,12 +31,15 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-		
+
+    void exit() override;
+
 private:
     Timeline timeline;
     ofxOscReceiver receiver;
     ofxOscSender sender;
     bool recording;
+    bool syncSMPTE = false;
     TrackChannel trackChannel;
     ofxOscMessage lastMessage;
 
@@ -43,9 +47,9 @@ private:
     TracksWindowUI tracksUI;
     ofxImGui::Gui gui;
 
+    MidiTimecodeSyncRef timecodeSyncer;
+
 	void writeTrack() const;
-
     void readTrack() const;
-
 	void drawMainMenu() const;
 };

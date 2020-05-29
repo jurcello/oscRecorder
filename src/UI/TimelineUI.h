@@ -18,16 +18,17 @@ typedef std::shared_ptr<TimelineUI> TimelineUIRef;
 
 class TimelineUI {
 public:
-    static TimelineUIRef create(Timeline &timeline, bool &recording);
+    static TimelineUIRef create(Timeline &timeline, bool &recording, bool &syncSMPTE);
     void drawUi(int top);
     void setInputMessage(ofxOscMessage message);
     void setOutputMessage(ofxOscMessage &outputMessage);
 
 private:
-    TimelineUI(Timeline &timeline, bool &recording);
+    TimelineUI(Timeline &timeline, bool &recording, bool &syncSMPTE);
 
     Timeline &timeline;
     bool &recording;
+    bool &syncSMPTE;
     ofxOscMessage inputMessage;
     ofxOscMessage outputMessage;
 };

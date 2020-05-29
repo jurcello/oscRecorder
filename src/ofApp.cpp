@@ -9,9 +9,12 @@ void ofApp::setup(){
     receiver.setup(IN_PORT);
     sender.setup("localhost", OUT_PORT);
     gui.setup();
-    timelineUI = TimelineUI::create(timeline, recording);
+    timelineUI = TimelineUI::create(timeline, recording, syncSMPTE);
     ofxOscMessage m;
     lastMessage = m;
+
+    timecodeSyncer = MidiTimecodeSync::create(timeline);
+    timecodeSyncer->setup();
 }
 
 //--------------------------------------------------------------
@@ -36,6 +39,13 @@ void ofApp::update(){
             sender.sendMessage(lastMessage);
         }
     }
+    if (syncSMPTE) {
+        timecodeSyncer->enable();
+    }
+    else {
+        timecodeSyncer->disable();
+    }
+    timecodeSyncer->update();
 }
 
 //--------------------------------------------------------------
@@ -177,5 +187,9 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+
+void ofApp::exit() {
+    timecodeSyncer->exit();
 }
 

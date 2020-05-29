@@ -18,7 +18,7 @@ void TracksWindowUI::draw(Timeline &timeline, TrackChannel channel, int marginTo
 
     auto windowWidth = ImGui::GetWindowWidth();
     drawerHelper.setCurrentWindowWidth(static_cast<int>(windowWidth));
-    if ((playing && following) || drawerHelper.getScrollOffset() == 0) {
+    if ((playing && following)) {
         ImGui::SetScrollX(drawerHelper.getScrollOffset());
     }
     ImDrawList* drawList = ImGui::GetWindowDrawList();

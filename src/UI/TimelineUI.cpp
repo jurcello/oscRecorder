@@ -4,9 +4,9 @@
 
 #include "TimelineUI.h"
 
-TimelineUIRef TimelineUI::create(Timeline &timeline, bool &recording)
+TimelineUIRef TimelineUI::create(Timeline &timeline, bool &recording, bool &syncSMPTE)
 {
-    return TimelineUIRef(new TimelineUI(timeline, recording));
+    return TimelineUIRef(new TimelineUI(timeline, recording, syncSMPTE));
 }
 
 void TimelineUI::drawUi(int top) {
@@ -39,28 +39,25 @@ void TimelineUI::drawUi(int top) {
         recordingColor = recording ? ImVec4(0.8f, 0.0f, 0.0f, 1.0f) : ImVec4(0.2f, 0.0f, 0.0f, 1.0f);
         ImGui::PushStyleColor(ImGuiCol_Button, recordingColor);
         if (ImGui::Button("Record")) {
-            if (!recording) {
-                recording = true;
-                timeline.start();
-            }
+            recording = !recording;
         }
         ImGui::PopStyleColor(1);
     }
     ImGui::SameLine(0.f, 4.f);
     ImGui::Text(timeline.timecode().c_str());
-    ImGui::SameLine(0.f, 10.f);
+    ImGui::SameLine(0.f, 4.f);
+    ImGui::Checkbox("Sync to SMPTE source", &syncSMPTE);
     std::string inputMessageString = "Last input osc message: ";
     inputMessageString += Utils::oscMessageToString(inputMessage);
     ImGui::Text(inputMessageString.c_str());
-    ImGui::SameLine(0.f, 4.f);
     std::string outputMessageString = "Last output osc message: ";
     outputMessageString += Utils::oscMessageToString(outputMessage);
     ImGui::Text(outputMessageString.c_str());
     ImGui::End();
 }
 
-TimelineUI::TimelineUI(Timeline &timeline, bool &recording)
-:timeline(timeline), recording(recording)
+TimelineUI::TimelineUI(Timeline &timeline, bool &recording, bool &syncSMPTE)
+:timeline(timeline), recording(recording), syncSMPTE(syncSMPTE)
 {
     inputMessage = ofxOscMessage();
 }
