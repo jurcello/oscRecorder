@@ -73,7 +73,7 @@ void TrackDrawerHelper::setCurrentWindowWidth(int width) {
     currentWindowWidth = width;
 }
 
-float TrackDrawerHelper::getScrollOffset() {
+float TrackDrawerHelper::calculateScrollOffsetFromTIme() const {
     float offset = (currentTimeMillis / 1000.f) * pixelsPerSecond - currentWindowWidth / 2;
     float maxOffset = maxTime * pixelsPerSecond / 1000 - currentWindowWidth;
     return std::max(0.f, std::min(offset, maxOffset));
@@ -81,4 +81,12 @@ float TrackDrawerHelper::getScrollOffset() {
 
 uint64_t TrackDrawerHelper::getMillisFromPixels(float pixels) {
     return static_cast<uint64_t>((pixels / pixelsPerSecond) * 1000.f);
+}
+
+bool TrackDrawerHelper::pixelXIsVisible(int x) const {
+    return x >= currentScrollOffset && x <= currentScrollOffset + currentWindowWidth;
+}
+
+void TrackDrawerHelper::setCurrentScrollOffset(int currentScrollOffset) {
+    this->currentScrollOffset = currentScrollOffset;
 }

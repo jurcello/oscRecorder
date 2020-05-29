@@ -116,7 +116,7 @@ TEST_CASE("The position of the content can be centered based on the time", "[Tra
     SECTION("When the width of the content is the same as the window with, the scrollOffset is 0") {
         trackDrawer.setMaxTimeMillis(secondsToMillis(10));
         trackDrawer.setCurrentWindowWidth(200);
-        REQUIRE(trackDrawer.getScrollOffset() == 0);
+        REQUIRE(trackDrawer.calculateScrollOffsetFromTIme() == 0);
     }
 
    SECTION("When the width of the content is twice the window with, and the time is half max time") {
@@ -124,7 +124,7 @@ TEST_CASE("The position of the content can be centered based on the time", "[Tra
         trackDrawer.setMaxTimeMillis(secondsToMillis(200));
         trackDrawer.setCurrentWindowWidth(100);
         trackDrawer.setCurrentTimeMillis(secondsToMillis(100));
-        REQUIRE(trackDrawer.getScrollOffset() == 50);
+        REQUIRE(trackDrawer.calculateScrollOffsetFromTIme() == 50);
     }
 
    SECTION("When the width of the content is twice the window with, and the time is a bit after a quarter of the time") {
@@ -132,27 +132,27 @@ TEST_CASE("The position of the content can be centered based on the time", "[Tra
         trackDrawer.setMaxTimeMillis(secondsToMillis(200));
         trackDrawer.setCurrentWindowWidth(100);
         trackDrawer.setCurrentTimeMillis(secondsToMillis(60));
-        REQUIRE(trackDrawer.getScrollOffset() == 10);
+        REQUIRE(trackDrawer.calculateScrollOffsetFromTIme() == 10);
         trackDrawer.setCurrentTimeMillis(secondsToMillis(80));
-        REQUIRE(trackDrawer.getScrollOffset() == 30);
+        REQUIRE(trackDrawer.calculateScrollOffsetFromTIme() == 30);
     }
    SECTION("When the time is earlier than the time on half the window from the start, there is no offset") {
         trackDrawer.setPixelsPerSecond(2.f);
         trackDrawer.setMaxTimeMillis(secondsToMillis(400));
         trackDrawer.setCurrentWindowWidth(100);
         trackDrawer.setCurrentTimeMillis(secondsToMillis(20));
-        REQUIRE(trackDrawer.getScrollOffset() == 0);
+        REQUIRE(trackDrawer.calculateScrollOffsetFromTIme() == 0);
         trackDrawer.setCurrentTimeMillis(secondsToMillis(25));
-        REQUIRE(trackDrawer.getScrollOffset() == 0);
+        REQUIRE(trackDrawer.calculateScrollOffsetFromTIme() == 0);
     }
     SECTION("When the time nears the end, the offset stays the same") {
         trackDrawer.setPixelsPerSecond(1.f);
         trackDrawer.setMaxTimeMillis(secondsToMillis(200));
         trackDrawer.setCurrentWindowWidth(100);
         trackDrawer.setCurrentTimeMillis(secondsToMillis(150));
-        REQUIRE(trackDrawer.getScrollOffset() == 100);
+        REQUIRE(trackDrawer.calculateScrollOffsetFromTIme() == 100);
         trackDrawer.setCurrentTimeMillis(secondsToMillis(170));
-        REQUIRE(trackDrawer.getScrollOffset() == 100);
+        REQUIRE(trackDrawer.calculateScrollOffsetFromTIme() == 100);
     }
 
 }
@@ -175,5 +175,45 @@ TEST_CASE("A millisecond value can be transformed to a pixel position" "[TrackDr
     REQUIRE(trackDrawer.getPixelsFromMillis(0) == 0);
     REQUIRE(trackDrawer.getPixelsFromMillis(1000) == 100);
 }
+
+TEST_CASE("The fact if an x value is currently visible can be asked" "[TrackDrawerHelper]") {
+    TrackDrawerHelper trackDrawer;
+    trackDrawer.setPixelsPerSecond(100.f);
+    trackDrawer.setMaxTimeMillis(secondsToMillis(400));
+    trackDrawer.setCurrentWindowWidth(100);
+
+    SECTION("Current scrollOffset is 0 and x is 0 should be visible") {
+        trackDrawer.setCurrentScrollOffset(0);
+        REQUIRE(trackDrawer.pixelXIsVisible(0) == true);
+    }
+
+    SECTION("Current scrollOffset is 0 and x is 100 should be visible") {
+        trackDrawer.setCurrentScrollOffset(0);
+        REQUIRE(trackDrawer.pixelXIsVisible(100) == true);
+    }
+
+    SECTION("Current scrollOffset is 0 and x is 101 should be visible") {
+        trackDrawer.setCurrentScrollOffset(0);
+        REQUIRE(trackDrawer.pixelXIsVisible(101) == false);
+    }
+    SECTION("Current scrollOffset is 100 and x is 150 should be visible") {
+        trackDrawer.setCurrentScrollOffset(100);
+        REQUIRE(trackDrawer.pixelXIsVisible(150) == true);
+    }
+    SECTION("Current scrollOffset is 50 and x is 151 should not be visible") {
+        trackDrawer.setCurrentScrollOffset(50);
+        REQUIRE(trackDrawer.pixelXIsVisible(151) == false);
+    }
+    SECTION("Current scrollOffset is 100 and x is 0 should be invisible") {
+        trackDrawer.setCurrentScrollOffset(100);
+        REQUIRE(trackDrawer.pixelXIsVisible(0) == false);
+    }
+    SECTION("Current scrollOffset is 50 and x is 50 should be visible") {
+        trackDrawer.setCurrentScrollOffset(50);
+        REQUIRE(trackDrawer.pixelXIsVisible(50) == true);
+    }
+
+}
+
 
 #pragma clang diagnostic pop

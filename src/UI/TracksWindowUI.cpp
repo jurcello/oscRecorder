@@ -19,8 +19,9 @@ void TracksWindowUI::draw(Timeline &timeline, TrackChannel channel, int marginTo
     auto windowWidth = ImGui::GetWindowWidth();
     drawerHelper.setCurrentWindowWidth(static_cast<int>(windowWidth));
     if ((playing && following)) {
-        ImGui::SetScrollX(drawerHelper.getScrollOffset());
+        ImGui::SetScrollX(drawerHelper.calculateScrollOffsetFromTIme());
     }
+    drawerHelper.setCurrentScrollOffset(static_cast<int>(ImGui::GetScrollX()));
     ImDrawList* drawList = ImGui::GetWindowDrawList();
     auto windowLeftTop = ImGui::GetWindowPos();
     auto windowBottomRight = windowLeftTop + ImGui::GetWindowSize();
@@ -66,10 +67,12 @@ void TracksWindowUI::drawTracks(ImDrawList *drawList, const glm::vec2 &windowPos
         for (TrackEvent<ofxOscMessage> event : *(channel.track)) {
             if (event.message.getNumArgs() == 1 && event.message.getArgAsFloat(0)) {
                 auto positionX = drawerHelper.getPixelsFromMillis(event.millis);
-                auto messageValue = event.message.getArgAsFloat(0);
-                auto positionY = (trackHeight - messageValue * trackHeight) + paddingTop;
-                auto center = ImVec2(positionX, positionY) + windowPos;
-                drawList->AddCircleFilled(center, 2.f, ImColor(255, 0, 0, 255));
+                if (drawerHelper.pixelXIsVisible(static_cast<int>(positionX))) {
+                    auto messageValue = event.message.getArgAsFloat(0);
+                    auto positionY = (trackHeight - messageValue * trackHeight) + paddingTop;
+                    auto center = ImVec2(positionX, positionY) + windowPos;
+                    drawList->AddCircleFilled(center, 2.f, ImColor(255, 0, 0, 255));
+                }
             }
         }
     }
@@ -79,12 +82,13 @@ void TracksWindowUI::drawRuler(ImDrawList *drawList, ImVec2 windowPos, float off
     auto points = drawerHelper.getRulerData();
     auto color = ImColor(255, 255, 255);
     for (auto point : points) {
-        if (point.hasText) {
-            drawList->AddLine(ImVec2(point.x, offsetTop) + windowPos, ImVec2(point.x, offsetTop + lineLength) + windowPos, color, 2.f);
-            drawList->AddText(NULL, 14.f, ImVec2(point.x - 17.f, offsetTop + lineLength + 4.f) + windowPos, color, point.text.c_str(), NULL);
-        }
-        else {
-            drawList->AddLine(ImVec2(point.x, offsetTop) + windowPos, ImVec2(point.x, offsetTop + lineLength / 2) + windowPos, color, 2.f);
+        if (drawerHelper.pixelXIsVisible(point.x)) {
+            if (point.hasText) {
+                drawList->AddLine(ImVec2(point.x, offsetTop) + windowPos, ImVec2(point.x, offsetTop + lineLength) + windowPos, color, 2.f);
+                drawList->AddText(NULL, 14.f, ImVec2(point.x - 17.f, offsetTop + lineLength + 4.f) + windowPos, color, point.text.c_str(), NULL);
+            } else {
+                drawList->AddLine(ImVec2(point.x, offsetTop) + windowPos, ImVec2(point.x, offsetTop + lineLength / 2) + windowPos, color, 2.f);
+            }
         }
     }
 }

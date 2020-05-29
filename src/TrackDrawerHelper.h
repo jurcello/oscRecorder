@@ -18,7 +18,7 @@ public:
     int getContentSize();
     void setCurrentWindowWidth(int width);
 
-    float getScrollOffset();
+    float calculateScrollOffsetFromTIme() const;
 
     void setPixelsPerSecond(float pps);
 
@@ -28,6 +28,9 @@ public:
 
     uint64_t getMillisFromPixels(float pixels);
     float getPixelsFromMillis(u_int64_t millis) const;
+
+    bool pixelXIsVisible(int x) const;
+    void setCurrentScrollOffset(int currentScrollOffset);
 
 private:
     uint64_t maxTime;
@@ -40,6 +43,8 @@ private:
     RulerData getDataPoint(int seconds) const;
 
     std::string formatTimecodeString(int displaySeconds, int displayMinutes) const;
+
+    int currentScrollOffset;
 };
 
 
